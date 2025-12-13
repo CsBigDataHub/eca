@@ -430,10 +430,10 @@
                                             {name :name args :arguments} function
                                             ;; Use RID as key to avoid collisions between API requests
                                             tool-key (str rid "-" index)
-                                            ;; Generate a 9-character alphanumeric tool call ID
-                                            ;; Use the provided id if it meets the exact requirements (9 chars, alphanumeric)
-                                            ;; Otherwise generate a new one in the format: callXXXXX where X are digits
-                                            unique-id (if (and id (re-matches #"[a-zA-Z0-9]{9}" id))
+                                            ;; Generate a compatible tool call ID
+                                            ;; Use the provided id if it's alphanumeric (most APIs accept various formats)
+                                            ;; Generate a 9-character alphanumeric id if the provided id contains invalid characters
+                                            unique-id (if (and id (re-matches #"[a-zA-Z0-9]+" id))
                                                         id
                                                         (format "call%05d" (mod (or (some-> id Integer/parseInt) index) 100000)))]
                                         (when (and name unique-id)
