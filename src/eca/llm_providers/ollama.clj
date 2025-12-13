@@ -135,7 +135,8 @@
                            (cond
                              (seq (:tool_calls message))
                              (let [function (:function (first (seq (:tool_calls message))))
-                                   call-id (str (random-uuid))
+                                   ;; Generate a 9-character alphanumeric tool call ID for API compatibility
+                                   call-id (format "call%05d" (mod (hash (random-uuid)) 100000))
                                    tool-call {:id call-id
                                               :full-name (:name function)
                                               :arguments (:arguments function)}]
