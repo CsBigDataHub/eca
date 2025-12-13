@@ -308,18 +308,11 @@
                          :tools (when (seq tools) (->tools tools))))
         ;; Remove version from extra-payload to avoid sending it to the API
         extra-payload (dissoc extra-payload :version)
-        ;; Handle potential conflicts between extra-payload and version-based tokens
-        extra-payload (if (= version 1)
-                        ;; For version 1, remove max_completion_tokens if present and ensure max_tokens
-                        (-> extra-payload
-                            (dissoc :max_completion_tokens)
-                            (cond-> (not (contains? extra-payload :max_tokens))
-                              (assoc :max_tokens 32000)))
-                        ;; For version 2, remove max_tokens if present and ensure max_completion_tokens
-                        (-> extra-payload
-                            (dissoc :max_tokens)
-                            (cond-> (not (contains? extra-payload :max_completion_tokens))
-                              (assoc :max_completion_tokens 32000))))]
+        ;; Remove conflicting max tokens parameters from extra-payload
+        ;; to ensure base-request's version-specific parameter takes precedence
+        extra-payload (cond-> extra-payload
+                        (= version 1) (dissoc :max_completion_tokens)
+                        (not= version 1) (dissoc :max_tokens))]
     (deep-merge base-request extra-payload)))
 
 (defn chat-completion!
@@ -437,8 +430,12 @@
                                             {name :name args :arguments} function
                                             ;; Use RID as key to avoid collisions between API requests
                                             tool-key (str rid "-" index)
-                                            ;; Create globally unique tool call ID for client
-                                            unique-id (when id (str rid "-" id))]
+                                            ;; Generate a 9-character alphanumeric tool call ID
+                                            ;; Use the provided id if it meets the exact requirements (9 chars, alphanumeric)
+                                            ;; Otherwise generate a new one in the format: callXXXXX where X are digits
+                                            unique-id (if (and id (re-matches #"[a-zA-Z0-9]{9}" id))
+                                                        id
+                                                        (format "call%05d" (mod (or (some-> id Integer/parseInt) index) 100000)))]
                                         (when (and name unique-id)
                                           (on-prepare-tool-call {:id unique-id
                                                                  :full-name name
