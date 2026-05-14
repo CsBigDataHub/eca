@@ -6,27 +6,29 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Troubleshoot common ECA issues: connection problems, provider errors, tool failures, and performance optimization.">
+        <meta name="description" content="Configure ECA plugins: load external skills, agents, commands, rules, hooks, MCP servers and config overrides from git repos or local paths.">
       
       
       
-        <link rel="canonical" href="https://eca.dev/troubleshooting/">
+        <link rel="canonical" href="https://eca.dev/config/plugins/">
       
       
-        <link rel="prev" href="../protocol/">
+        <link rel="prev" href="../context-management/">
       
       
+        <link rel="next" href="../metrics/">
       
-      <link rel="icon" href="../images/logo.svg">
+      
+      <link rel="icon" href="../../images/logo.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
-        <title>Troubleshooting - ECA - Editor Code Assistant</title>
+        <title>Plugins / Marketplace - ECA - Editor Code Assistant</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
       
 
@@ -45,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/layout.css">
+      <link rel="stylesheet" href="../../stylesheets/layout.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -76,9 +78,9 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Troubleshooting - ECA - Editor Code Assistant" />
-  <meta property="og:description" content="Troubleshoot common ECA issues: connection problems, provider errors, tool failures, and performance optimization." />
-  <meta property="og:url" content="https://eca.dev/troubleshooting/" />
+  <meta property="og:title" content="Plugins / Marketplace - ECA - Editor Code Assistant" />
+  <meta property="og:description" content="Configure ECA plugins: load external skills, agents, commands, rules, hooks, MCP servers and config overrides from git repos or local paths." />
+  <meta property="og:url" content="https://eca.dev/config/plugins/" />
   <meta property="og:image" content="https://eca.dev/images/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -86,8 +88,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Troubleshooting - ECA - Editor Code Assistant" />
-  <meta name="twitter:description" content="Troubleshoot common ECA issues: connection problems, provider errors, tool failures, and performance optimization." />
+  <meta name="twitter:title" content="Plugins / Marketplace - ECA - Editor Code Assistant" />
+  <meta name="twitter:description" content="Configure ECA plugins: load external skills, agents, commands, rules, hooks, MCP servers and config overrides from git repos or local paths." />
   <meta name="twitter:image" content="https://eca.dev/images/og-image.png" />
 
   </head>
@@ -102,7 +104,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#troubleshooting" class="md-skip">
+        <a href="#plugins-marketplace" class="md-skip">
           Skip to content
         </a>
       
@@ -116,9 +118,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="ECA - Editor Code Assistant" class="md-header__button md-logo" aria-label="ECA - Editor Code Assistant" data-md-component="logo">
+    <a href="../.." title="ECA - Editor Code Assistant" class="md-header__button md-logo" aria-label="ECA - Editor Code Assistant" data-md-component="logo">
       
-  <img src="../images/logo.svg" alt="logo">
+  <img src="../../images/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -135,7 +137,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Troubleshooting
+              Plugins / Marketplace
             
           </span>
         </div>
@@ -222,7 +224,7 @@
     
     
       <li class="md-tabs__item">
-        <a href=".." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
   
@@ -242,7 +244,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../features/" class="md-tabs__link">
+        <a href="../../features/" class="md-tabs__link">
           
   
   
@@ -262,7 +264,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../install/" class="md-tabs__link">
+        <a href="../../install/" class="md-tabs__link">
           
   
   
@@ -278,11 +280,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../config/introduction/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../introduction/" class="md-tabs__link">
           
   
   
@@ -300,7 +304,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../protocol/" class="md-tabs__link">
+      <a href="../../protocol/" class="md-tabs__link">
         
   
   
@@ -317,11 +321,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../troubleshooting/" class="md-tabs__link">
         
   
   
@@ -394,9 +396,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="ECA - Editor Code Assistant" class="md-nav__button md-logo" aria-label="ECA - Editor Code Assistant" data-md-component="logo">
+    <a href="../.." title="ECA - Editor Code Assistant" class="md-nav__button md-logo" aria-label="ECA - Editor Code Assistant" data-md-component="logo">
       
-  <img src="../images/logo.svg" alt="logo">
+  <img src="../../images/logo.svg" alt="logo">
 
     </a>
     ECA - Editor Code Assistant
@@ -468,7 +470,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -543,7 +545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/" class="md-nav__link">
+      <a href="../../features/" class="md-nav__link">
         
   
   
@@ -566,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workflows/" class="md-nav__link">
+      <a href="../../workflows/" class="md-nav__link">
         
   
   
@@ -641,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../install/" class="md-nav__link">
+      <a href="../../install/" class="md-nav__link">
         
   
   
@@ -668,28 +670,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -702,7 +707,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Configuration
@@ -716,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/introduction/" class="md-nav__link">
+      <a href="../introduction/" class="md-nav__link">
         
   
   
@@ -739,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/template/" class="md-nav__link">
+      <a href="../template/" class="md-nav__link">
         
   
   
@@ -762,7 +767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/models/" class="md-nav__link">
+      <a href="../models/" class="md-nav__link">
         
   
   
@@ -785,7 +790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/tools/" class="md-nav__link">
+      <a href="../tools/" class="md-nav__link">
         
   
   
@@ -808,7 +813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/variants/" class="md-nav__link">
+      <a href="../variants/" class="md-nav__link">
         
   
   
@@ -831,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/skills/" class="md-nav__link">
+      <a href="../skills/" class="md-nav__link">
         
   
   
@@ -854,7 +859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/rules/" class="md-nav__link">
+      <a href="../rules/" class="md-nav__link">
         
   
   
@@ -877,7 +882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/commands/" class="md-nav__link">
+      <a href="../commands/" class="md-nav__link">
         
   
   
@@ -900,7 +905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/agents/" class="md-nav__link">
+      <a href="../agents/" class="md-nav__link">
         
   
   
@@ -923,7 +928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/hooks/" class="md-nav__link">
+      <a href="../hooks/" class="md-nav__link">
         
   
   
@@ -946,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/completion/" class="md-nav__link">
+      <a href="../completion/" class="md-nav__link">
         
   
   
@@ -969,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/rewrite/" class="md-nav__link">
+      <a href="../rewrite/" class="md-nav__link">
         
   
   
@@ -992,7 +997,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/context-management/" class="md-nav__link">
+      <a href="../context-management/" class="md-nav__link">
         
   
   
@@ -1012,10 +1017,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../config/plugins/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Plugins / Marketplace
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1026,6 +1053,128 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#official-plugin-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Official Plugin Repository
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How it works
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      /plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugin-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      /plugin-install
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pointing-to-a-plugin-source-marketplace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pointing to a plugin source / marketplace
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-plugin-source-plugins-marketplace" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a plugin source (Plugins marketplace)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a plugin source (Plugins marketplace)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#marketplace-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Marketplace file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugin-directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin directory structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-invocation-naming-plugin-prefix" class="md-nav__link">
+    <span class="md-ellipsis">
+      User-invocation naming: plugin prefix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1038,7 +1187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/metrics/" class="md-nav__link">
+      <a href="../metrics/" class="md-nav__link">
         
   
   
@@ -1061,7 +1210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/remote/" class="md-nav__link">
+      <a href="../remote/" class="md-nav__link">
         
   
   
@@ -1084,7 +1233,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/network/" class="md-nav__link">
+      <a href="../network/" class="md-nav__link">
         
   
   
@@ -1107,7 +1256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/examples/" class="md-nav__link">
+      <a href="../examples/" class="md-nav__link">
         
   
   
@@ -1137,7 +1286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../protocol/" class="md-nav__link">
+      <a href="../../protocol/" class="md-nav__link">
         
   
   
@@ -1156,32 +1305,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Troubleshooting
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
         
   
   
@@ -1192,101 +1319,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#logs-stderr" class="md-nav__link">
-    <span class="md-ellipsis">
-      Logs (stderr)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Logs (stderr)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#server-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Server logs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#client-server-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Client&lt;-&gt;Server logs
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#doctor-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      Doctor command
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#missing-env-vars" class="md-nav__link">
-    <span class="md-ellipsis">
-      Missing env vars
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Missing env vars">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alternatives" class="md-nav__link">
-    <span class="md-ellipsis">
-      Alternatives
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ask-for-help" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ask for help
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1362,28 +1394,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#logs-stderr" class="md-nav__link">
+  <a href="#official-plugin-repository" class="md-nav__link">
     <span class="md-ellipsis">
-      Logs (stderr)
+      Official Plugin Repository
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Logs (stderr)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How it works
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commands
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commands">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#server-logs" class="md-nav__link">
+  <a href="#plugins" class="md-nav__link">
     <span class="md-ellipsis">
-      Server logs
+      /plugins
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#client-server-logs" class="md-nav__link">
+  <a href="#plugin-install" class="md-nav__link">
     <span class="md-ellipsis">
-      Client&lt;-&gt;Server logs
+      /plugin-install
     </span>
   </a>
   
@@ -1395,28 +1445,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#doctor-command" class="md-nav__link">
+  <a href="#pointing-to-a-plugin-source-marketplace" class="md-nav__link">
     <span class="md-ellipsis">
-      Doctor command
+      Pointing to a plugin source / marketplace
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#missing-env-vars" class="md-nav__link">
+  <a href="#creating-a-plugin-source-plugins-marketplace" class="md-nav__link">
     <span class="md-ellipsis">
-      Missing env vars
+      Creating a plugin source (Plugins marketplace)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Missing env vars">
+    <nav class="md-nav" aria-label="Creating a plugin source (Plugins marketplace)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#alternatives" class="md-nav__link">
+  <a href="#marketplace-file" class="md-nav__link">
     <span class="md-ellipsis">
-      Alternatives
+      Marketplace file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugin-directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugin directory structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-invocation-naming-plugin-prefix" class="md-nav__link">
+    <span class="md-ellipsis">
+      User-invocation naming: plugin prefix
     </span>
   </a>
   
@@ -1424,15 +1492,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ask-for-help" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ask for help
-    </span>
-  </a>
   
 </li>
       
@@ -1455,83 +1514,254 @@
   
 
 
-<h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h1>
-<h2 id="logs-stderr">Logs (stderr)<a class="headerlink" href="#logs-stderr" title="Permanent link">#</a></h2>
-<p>All supported editors have options to set the <strong>server args</strong> to help with that and options to check the server logs.</p>
-<p>To change and access the logs:</p>
-<h3 id="server-logs">Server logs<a class="headerlink" href="#server-logs" title="Permanent link">#</a></h3>
-<p>This controls what's logged by server on its actions, you can control to log more things via <code>--log-level debug</code> server arg.
-This should help log LLM outputs, and other useful stuff.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="emacs" name="__tabbed_1" type="radio" /><input id="vscode" name="__tabbed_1" type="radio" /><input id="intellij" name="__tabbed_1" type="radio" /><input id="nvim" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="emacs">Emacs</label><label for="vscode">VsCode</label><label for="intellij">IntelliJ</label><label for="nvim">Nvim</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">eca-extra-args</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;--log-level&quot;</span><span class="w"> </span><span class="s">&quot;debug&quot;</span><span class="p">))</span>
-</code></pre></div>
-<p><code>M-x</code> <code>eca-show-stderr</code></p>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><span class="filename">your-json-preferences</span><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;eca.serverArgs&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;--log-level debug&quot;</span>
+<h1 id="plugins-marketplace">Plugins / Marketplace<a class="headerlink" href="#plugins-marketplace" title="Permanent link">#</a></h1>
+<p>Plugins let you share and reuse ECA configuration across projects and teams. A plugin source is a git repository or local directory containing a <strong>marketplace</strong> of plugins, each providing any combination of skills, agents, commands, rules, hooks, MCP servers, and config overrides.</p>
+<h2 id="official-plugin-repository">Official Plugin Repository<a class="headerlink" href="#official-plugin-repository" title="Permanent link">#</a></h2>
+<p>ECA ships with built-in support for the <strong>official plugin repository</strong> at <a href="https://plugins.eca.dev">plugins.eca.dev</a>. This marketplace is pre-configured as the <code>"eca"</code> source, so you can install any of its plugins without adding a custom source — just list them in <code>install</code>:</p>
+<div class="highlight"><span class="filename">~/.config/eca/config.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;plugins&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;install&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;secret-guard&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;tdd&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;security-review&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Check the output channel <code>ECA stderr</code>.</p>
-</div>
-<div class="tabbed-block">
-<p>Add to <code>Tools</code> &gt; <code>ECA</code> &gt; <code>Server args</code>: <code>--log-level debug</code></p>
-<p>Via action 'ECA: Show server logs'.</p>
-</div>
-<div class="tabbed-block">
-<p><code>EcaShowLogs</code> </p>
-</div>
-</div>
-</div>
-<h3 id="client-server-logs">Client&lt;-&gt;Server logs<a class="headerlink" href="#client-server-logs" title="Permanent link">#</a></h3>
-<p>ECA works with clients (editors) sending and receiving messages to server, a process, you can start server <code>--verbose</code> which should log all jsonrpc communication between client and server to <code>stderr</code> buffer like what is being sent to LLMs or what ECA is responding to editors. </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="emacs_1" name="__tabbed_2" type="radio" /><input id="vscode_1" name="__tabbed_2" type="radio" /><input id="intellij_1" name="__tabbed_2" type="radio" /><input id="nvim_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="emacs_1">Emacs</label><label for="vscode_1">VsCode</label><label for="intellij_1">IntelliJ</label><label for="nvim_1">Nvim</label></div>
+<p>Browse available plugins and their documentation at <a href="https://plugins.eca.dev">plugins.eca.dev</a>, or run <code>/plugins</code> inside ECA to see the full list.</p>
+<p>Want to contribute a plugin? Check the <a href="https://github.com/editor-code-assistant/eca-plugins">eca-plugins</a> repository on GitHub.</p>
+<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">#</a></h2>
+<pre class="mermaid"><code>flowchart TD
+    A[ECA has a 'plugins' in config.json] --&gt; B{Git URL or local path?}
+    B --&gt;|git| C[Clone to ~/.eca/cache/plugins]
+    B --&gt;|local| D[Use directory directly]
+    C --&gt; E[Read .eca-plugin/marketplace.json]
+    D --&gt; E
+    E --&gt; F[Read plugins from 'install']
+    F --&gt; G[Merge into final ECA config]</code></pre>
+<ol>
+<li>You register one or more <strong>sources</strong> (git URL or local path) and list plugin names in <strong><code>install</code></strong>.</li>
+<li>ECA resolves each source — cloning git repos to a local cache or using the local path directly.  This is done on startup and (currently) each hour thereafter.</li>
+<li>Each source provides a <strong>marketplace</strong> (<code>.eca-plugin/marketplace.json</code>) listing its available plugins.</li>
+<li>ECA matches <code>install</code> names against the marketplace, then <strong>discovers components</strong> from each matched plugin directory.</li>
+<li>All components are <strong>merged</strong> into the config waterfall, in the order specified by the <code>install</code> key (later plugins override earlier plugins) — user config always takes precedence on conflicts.</li>
+</ol>
+<h2 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">#</a></h2>
+<h3 id="plugins"><code>/plugins</code><a class="headerlink" href="#plugins" title="Permanent link">#</a></h3>
+<p>Lists all available plugins from your configured marketplaces. Plugins that are already installed are marked with ✅.</p>
+<div class="highlight"><pre><span></span><code>/plugins
+</code></pre></div>
+<h3 id="plugin-install"><code>/plugin-install</code><a class="headerlink" href="#plugin-install" title="Permanent link">#</a></h3>
+<p>Installs a plugin by adding it to the <code>install</code> list in your global config.</p>
+<div class="highlight"><pre><span></span><code>/plugin-install &lt;plugin-name&gt;
+/plugin-install &lt;plugin-name@marketplace&gt;
+</code></pre></div>
+<p>Use <code>&lt;plugin-name@marketplace&gt;</code> to disambiguate when multiple sources provide a plugin with the same name. After installing, restart ECA for the plugin to take effect.</p>
+<h2 id="pointing-to-a-plugin-source-marketplace">Pointing to a plugin source / marketplace<a class="headerlink" href="#pointing-to-a-plugin-source-marketplace" title="Permanent link">#</a></h2>
+<p>The official <a href="https://plugins.eca.dev">plugins.eca.dev</a> marketplace is always available as the built-in <code>"eca"</code> source. To install plugins from it, just add their names to <code>install</code> — no source configuration needed.</p>
+<p>To add <strong>custom</strong> sources (your organization's plugins, community repos, or local directories), add named entries under the <code>plugins</code> key:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="official-repository-only" name="__tabbed_1" type="radio" /><input id="custom-git-source" name="__tabbed_1" type="radio" /><input id="local-path-for-development" name="__tabbed_1" type="radio" /><input id="multiple-sources" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="official-repository-only">Official repository only</label><label for="custom-git-source">Custom git source</label><label for="local-path-for-development">Local path (for development)</label><label for="multiple-sources">Multiple sources</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">eca-extra-args</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;--verbose&quot;</span><span class="p">))</span>
-</code></pre></div>
-<p><code>M-x</code> <code>eca-show-stderr</code></p>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><span class="filename">your-json-preferences</span><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;eca.serverArgs&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;--verbose&quot;</span>
+<p>No source configuration required — just list the plugins you want:</p>
+<div class="highlight"><span class="filename">~/.config/eca/config.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;plugins&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;install&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;tdd&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;secret-guard&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Check the output channel <code>ECA stderr</code>.</p>
 </div>
 <div class="tabbed-block">
-<p>Add to <code>Tools</code> &gt; <code>ECA</code> &gt; <code>Server args</code>: <code>--verbose</code></p>
-<p>Via action 'ECA: Show server logs'.</p>
+<div class="highlight"><span class="filename">~/.config/eca/config.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;plugins&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;my-org&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/my-org/eca-plugins.git&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;install&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;code-review&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;security-scanner&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><code>EcaShowLogs</code> </p>
+<div class="highlight"><span class="filename">.eca/config.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;plugins&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;local-dev&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/home/user/my-eca-plugins&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;install&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;my-plugin&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>ECA searches the built-in <code>"eca"</code> source plus all registered sources when resolving <code>install</code> entries:</p>
+<div class="highlight"><span class="filename">~/.config/eca/config.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;plugins&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;company&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/company/eca-plugins.git&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;community&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="s2">&quot;source&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/community/shared-plugins.git&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="s2">&quot;install&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;company-standards&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;linter-setup&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;shared-skills&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 </div>
 </div>
 </div>
-<h2 id="doctor-command">Doctor command<a class="headerlink" href="#doctor-command" title="Permanent link">#</a></h2>
-<p><code>/doctor</code> command should log useful information to debug model used, server version, env vars and more.</p>
-<h2 id="missing-env-vars">Missing env vars<a class="headerlink" href="#missing-env-vars" title="Permanent link">#</a></h2>
-<p>When launching editors from a GUI application (Dock, Applications folder, or desktop environment), high chance that it won't inherit environment variables from your shell configuration files (<code>.zshrc</code>, <code>.bashrc</code>, etc.). Since the ECA server is started as a subprocess from editor, it inherits the editor environment, which may be missing your API keys and other configuration.</p>
-<p>You can check if the env vars are available via <code>/doctor</code>.</p>
-<p>One way to workaround that is to start the editor from your terminal.</p>
-<h3 id="alternatives">Alternatives<a class="headerlink" href="#alternatives" title="Permanent link">#</a></h3>
+<h2 id="creating-a-plugin-source-plugins-marketplace">Creating a plugin source (Plugins marketplace)<a class="headerlink" href="#creating-a-plugin-source-plugins-marketplace" title="Permanent link">#</a></h2>
+<p>A plugin source is a directory (typically a git repo) with a <code>.eca-plugin/marketplace.json</code> file that lists available plugins.</p>
+<h3 id="marketplace-file">Marketplace file<a class="headerlink" href="#marketplace-file" title="Permanent link">#</a></h3>
+<div class="highlight"><span class="filename">.eca-plugin/marketplace.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;plugins&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;code-review&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Agents and skills for thorough code review&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;plugins/code-review&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;security-scanner&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Security-focused rules and hooks&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;plugins/security-scanner&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Each plugin entry has:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>Unique plugin name (used in <code>install</code>)</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>Human-readable description</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td>Relative path from the repo root to the plugin directory</td>
+</tr>
+</tbody>
+</table>
+<h3 id="plugin-directory-structure">Plugin directory structure<a class="headerlink" href="#plugin-directory-structure" title="Permanent link">#</a></h3>
+<p>Each plugin directory can contain any combination of:</p>
+<div class="highlight"><pre><span></span><code>plugins/code-review/
+├── skills/
+│   └── review-checklist/
+│       └── SKILL.md
+├── agents/
+│   └── reviewer.md
+├── commands/
+│   └── review.md
+├── rules/
+│   └── code-standards.md
+├── hooks/
+│   └── hooks.json
+├── .mcp.json
+└── eca.json
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>What it provides</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>skills/</code></td>
+<td>Skill definitions</td>
+<td>Each subfolder follows the <a href="https://agentskills.io/">agentskills.io</a> spec with a <code>SKILL.md</code></td>
+</tr>
+<tr>
+<td><code>agents/*.md</code></td>
+<td>Agent definitions</td>
+<td>Markdown files with YAML frontmatter, same format as local agents</td>
+</tr>
+<tr>
+<td><code>commands/*.md</code></td>
+<td>Custom commands</td>
+<td>Markdown command files, same format as local commands</td>
+</tr>
+<tr>
+<td><code>rules/**</code></td>
+<td>Rule files</td>
+<td>Any files under <code>rules/</code> are loaded as rules</td>
+</tr>
+<tr>
+<td><code>hooks/hooks.json</code></td>
+<td>Hooks</td>
+<td><a href="../hooks/">ECA hook format</a></td>
+</tr>
+<tr>
+<td><code>.mcp.json</code></td>
+<td>MCP server definitions</td>
+<td>Standard <code>{"mcpServers": {...}}</code> format</td>
+</tr>
+<tr>
+<td><code>eca.json</code></td>
+<td>Config overrides</td>
+<td>Arbitrary ECA config keys deep-merged into config</td>
+</tr>
+</tbody>
+</table>
+<p>All paths are optional — include only what your plugin needs.</p>
+<h3 id="user-invocation-naming-plugin-prefix">User-invocation naming: plugin prefix<a class="headerlink" href="#user-invocation-naming-plugin-prefix" title="Permanent link">#</a></h3>
+<p>Commands and skills provided by a plugin are exposed to the user under a <code>&lt;plugin-name&gt;:&lt;name&gt;</code> namespace. This avoids collisions between plugins and makes it obvious which plugin a command or skill comes from.</p>
 <ul>
-<li>
-<p>Start the editor from your terminal.</p>
-</li>
-<li>
-<p>Set variables in your editor if supported, example in Emacs: <code>(setenv "MY_ENV" "my-value")</code></p>
-</li>
-<li>
-<p>On macOS, you can set environment variables system-wide using <code>launchctl</code>:</p>
-</li>
+<li>A command <code>deploy.md</code> inside plugin <code>ui-doomer</code> is invoked as <code>/ui-doomer:deploy</code>.</li>
+<li>A skill named <code>button</code> inside plugin <code>ui-doomer</code> is invoked as <code>/ui-doomer:button</code>.</li>
+<li>When the plugin name equals the command or skill name, the prefix is dropped: a skill named <code>ui-doomer</code> inside plugin <code>ui-doomer</code> is just <code>/ui-doomer</code> (not <code>/ui-doomer:ui-doomer</code>).</li>
+<li>User-local and user-global commands/skills (from <code>~/.config/eca/commands/</code> or <code>.eca/commands/</code>) are not prefixed.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>launchctl<span class="w"> </span>setenv<span class="w"> </span>ANTHROPIC_API_KEY<span class="w"> </span><span class="s2">&quot;your-key-here&quot;</span>
+<p>If a plugin's prefixed command name happens to collide with an MCP prompt of the form <code>server:prompt</code>, the plugin command takes precedence.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="skill-only-plugin" name="__tabbed_2" type="radio" /><input id="hooks--mcp-plugin" name="__tabbed_2" type="radio" /><input id="config-overrides-only" name="__tabbed_2" type="radio" /><input id="full-plugin" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="skill-only-plugin">Skill-only plugin</label><label for="hooks--mcp-plugin">Hooks + MCP plugin</label><label for="config-overrides-only">Config overrides only</label><label for="full-plugin">Full plugin</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>plugins/gif-maker/
+└── skills/
+    └── gif-generator/
+        ├── SKILL.md
+        └── scripts/
+            └── generate.py
 </code></pre></div>
-<h2 id="ask-for-help">Ask for help<a class="headerlink" href="#ask-for-help" title="Permanent link">#</a></h2>
-<p>You can ask for help via chat <a href="https://clojurians.slack.com/archives/C093426FPUG">here</a></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>plugins/security-scanner/
+├── hooks/
+│   └── hooks.json
+└── .mcp.json
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>plugins/team-defaults/
+└── eca.json
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>plugins/company-standards/
+├── skills/
+│   └── internal-api/
+│       └── SKILL.md
+├── agents/
+│   └── reviewer.md
+├── commands/
+│   └── deploy.md
+├── rules/
+│   └── coding-standards.md
+├── hooks/
+│   └── hooks.json
+├── .mcp.json
+└── eca.json
+</code></pre></div>
+</div>
+</div>
+</div>
 
 
 
@@ -1583,17 +1813,28 @@ This should help log LLM outputs, and other useful stuff.</p>
   
   <nav class="md-footer__inner md-grid" aria-label="Footer" >
     
-    <a href="../protocol/" class="md-footer__link md-footer__link--prev">
+    <a href="../context-management/" class="md-footer__link md-footer__link--prev">
       <div class="md-footer__button md-icon">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </div>
       <div class="md-footer__title">
         <span class="md-footer__direction">Previous</span>
-        <span class="md-ellipsis">Protocol</span>
+        <span class="md-ellipsis">Context Management</span>
       </div>
     </a>
     
+    
+    <a href="../metrics/" class="md-footer__link md-footer__link--next">
+      <div class="md-footer__title">
+        <span class="md-footer__direction">Next</span>
+        <span class="md-ellipsis">Metrics</span>
+      </div>
+      <div class="md-footer__button md-icon">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+      </div>
+    </a>
     
   </nav>
   
@@ -1655,10 +1896,10 @@ This should help log LLM outputs, and other useful stuff.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.expand", "navigation.sections", "content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.sections", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
     
   </body>

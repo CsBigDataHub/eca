@@ -6,27 +6,29 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Troubleshoot common ECA issues: connection problems, provider errors, tool failures, and performance optimization.">
+        <meta name="description" content="Configure ECA rules: define coding standards, conventions, and constraints the LLM must follow globally or per project.">
       
       
       
-        <link rel="canonical" href="https://eca.dev/troubleshooting/">
+        <link rel="canonical" href="https://eca.dev/config/rules/">
       
       
-        <link rel="prev" href="../protocol/">
+        <link rel="prev" href="../skills/">
       
       
+        <link rel="next" href="../commands/">
       
-      <link rel="icon" href="../images/logo.svg">
+      
+      <link rel="icon" href="../../images/logo.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
-        <title>Troubleshooting - ECA - Editor Code Assistant</title>
+        <title>Rules - ECA - Editor Code Assistant</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
       
 
@@ -45,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/layout.css">
+      <link rel="stylesheet" href="../../stylesheets/layout.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -76,9 +78,9 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Troubleshooting - ECA - Editor Code Assistant" />
-  <meta property="og:description" content="Troubleshoot common ECA issues: connection problems, provider errors, tool failures, and performance optimization." />
-  <meta property="og:url" content="https://eca.dev/troubleshooting/" />
+  <meta property="og:title" content="Rules - ECA - Editor Code Assistant" />
+  <meta property="og:description" content="Configure ECA rules: define coding standards, conventions, and constraints the LLM must follow globally or per project." />
+  <meta property="og:url" content="https://eca.dev/config/rules/" />
   <meta property="og:image" content="https://eca.dev/images/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -86,8 +88,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Troubleshooting - ECA - Editor Code Assistant" />
-  <meta name="twitter:description" content="Troubleshoot common ECA issues: connection problems, provider errors, tool failures, and performance optimization." />
+  <meta name="twitter:title" content="Rules - ECA - Editor Code Assistant" />
+  <meta name="twitter:description" content="Configure ECA rules: define coding standards, conventions, and constraints the LLM must follow globally or per project." />
   <meta name="twitter:image" content="https://eca.dev/images/og-image.png" />
 
   </head>
@@ -102,7 +104,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#troubleshooting" class="md-skip">
+        <a href="#rules" class="md-skip">
           Skip to content
         </a>
       
@@ -116,9 +118,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="ECA - Editor Code Assistant" class="md-header__button md-logo" aria-label="ECA - Editor Code Assistant" data-md-component="logo">
+    <a href="../.." title="ECA - Editor Code Assistant" class="md-header__button md-logo" aria-label="ECA - Editor Code Assistant" data-md-component="logo">
       
-  <img src="../images/logo.svg" alt="logo">
+  <img src="../../images/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -135,7 +137,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Troubleshooting
+              Rules
             
           </span>
         </div>
@@ -222,7 +224,7 @@
     
     
       <li class="md-tabs__item">
-        <a href=".." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
   
@@ -242,7 +244,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../features/" class="md-tabs__link">
+        <a href="../../features/" class="md-tabs__link">
           
   
   
@@ -262,7 +264,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../install/" class="md-tabs__link">
+        <a href="../../install/" class="md-tabs__link">
           
   
   
@@ -278,11 +280,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../config/introduction/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../introduction/" class="md-tabs__link">
           
   
   
@@ -300,7 +304,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../protocol/" class="md-tabs__link">
+      <a href="../../protocol/" class="md-tabs__link">
         
   
   
@@ -317,11 +321,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../troubleshooting/" class="md-tabs__link">
         
   
   
@@ -394,9 +396,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="ECA - Editor Code Assistant" class="md-nav__button md-logo" aria-label="ECA - Editor Code Assistant" data-md-component="logo">
+    <a href="../.." title="ECA - Editor Code Assistant" class="md-nav__button md-logo" aria-label="ECA - Editor Code Assistant" data-md-component="logo">
       
-  <img src="../images/logo.svg" alt="logo">
+  <img src="../../images/logo.svg" alt="logo">
 
     </a>
     ECA - Editor Code Assistant
@@ -468,7 +470,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -543,7 +545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/" class="md-nav__link">
+      <a href="../../features/" class="md-nav__link">
         
   
   
@@ -566,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workflows/" class="md-nav__link">
+      <a href="../../workflows/" class="md-nav__link">
         
   
   
@@ -641,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../install/" class="md-nav__link">
+      <a href="../../install/" class="md-nav__link">
         
   
   
@@ -668,28 +670,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -702,7 +707,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Configuration
@@ -716,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/introduction/" class="md-nav__link">
+      <a href="../introduction/" class="md-nav__link">
         
   
   
@@ -739,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/template/" class="md-nav__link">
+      <a href="../template/" class="md-nav__link">
         
   
   
@@ -762,7 +767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/models/" class="md-nav__link">
+      <a href="../models/" class="md-nav__link">
         
   
   
@@ -785,7 +790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/tools/" class="md-nav__link">
+      <a href="../tools/" class="md-nav__link">
         
   
   
@@ -808,7 +813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/variants/" class="md-nav__link">
+      <a href="../variants/" class="md-nav__link">
         
   
   
@@ -831,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/skills/" class="md-nav__link">
+      <a href="../skills/" class="md-nav__link">
         
   
   
@@ -851,10 +856,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../config/rules/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Rules
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -865,6 +892,122 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rules-vs-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rules vs Skills
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rule-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rule locations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-and-path-scoped-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static and path-scoped rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frontmatter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontmatter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Frontmatter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      agent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model" class="md-nav__link">
+    <span class="md-ellipsis">
+      model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      paths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enforce" class="md-nav__link">
+    <span class="md-ellipsis">
+      enforce
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to use rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#condition-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Condition variables
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -877,7 +1020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/commands/" class="md-nav__link">
+      <a href="../commands/" class="md-nav__link">
         
   
   
@@ -900,7 +1043,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/agents/" class="md-nav__link">
+      <a href="../agents/" class="md-nav__link">
         
   
   
@@ -923,7 +1066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/hooks/" class="md-nav__link">
+      <a href="../hooks/" class="md-nav__link">
         
   
   
@@ -946,7 +1089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/completion/" class="md-nav__link">
+      <a href="../completion/" class="md-nav__link">
         
   
   
@@ -969,7 +1112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/rewrite/" class="md-nav__link">
+      <a href="../rewrite/" class="md-nav__link">
         
   
   
@@ -992,7 +1135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/context-management/" class="md-nav__link">
+      <a href="../context-management/" class="md-nav__link">
         
   
   
@@ -1015,7 +1158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/plugins/" class="md-nav__link">
+      <a href="../plugins/" class="md-nav__link">
         
   
   
@@ -1038,7 +1181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/metrics/" class="md-nav__link">
+      <a href="../metrics/" class="md-nav__link">
         
   
   
@@ -1061,7 +1204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/remote/" class="md-nav__link">
+      <a href="../remote/" class="md-nav__link">
         
   
   
@@ -1084,7 +1227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/network/" class="md-nav__link">
+      <a href="../network/" class="md-nav__link">
         
   
   
@@ -1107,7 +1250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/examples/" class="md-nav__link">
+      <a href="../examples/" class="md-nav__link">
         
   
   
@@ -1137,7 +1280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../protocol/" class="md-nav__link">
+      <a href="../../protocol/" class="md-nav__link">
         
   
   
@@ -1156,32 +1299,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Troubleshooting
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
         
   
   
@@ -1192,101 +1313,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#logs-stderr" class="md-nav__link">
-    <span class="md-ellipsis">
-      Logs (stderr)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Logs (stderr)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#server-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Server logs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#client-server-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Client&lt;-&gt;Server logs
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#doctor-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      Doctor command
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#missing-env-vars" class="md-nav__link">
-    <span class="md-ellipsis">
-      Missing env vars
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Missing env vars">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alternatives" class="md-nav__link">
-    <span class="md-ellipsis">
-      Alternatives
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ask-for-help" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ask for help
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1362,28 +1388,73 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#logs-stderr" class="md-nav__link">
+  <a href="#rules-vs-skills" class="md-nav__link">
     <span class="md-ellipsis">
-      Logs (stderr)
+      Rules vs Skills
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Logs (stderr)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rule-locations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rule locations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-and-path-scoped-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      Static and path-scoped rules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frontmatter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontmatter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Frontmatter">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#server-logs" class="md-nav__link">
+  <a href="#agent" class="md-nav__link">
     <span class="md-ellipsis">
-      Server logs
+      agent
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#client-server-logs" class="md-nav__link">
+  <a href="#model" class="md-nav__link">
     <span class="md-ellipsis">
-      Client&lt;-&gt;Server logs
+      model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      paths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enforce" class="md-nav__link">
+    <span class="md-ellipsis">
+      enforce
     </span>
   </a>
   
@@ -1395,42 +1466,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#doctor-command" class="md-nav__link">
+  <a href="#how-to-use-rules" class="md-nav__link">
     <span class="md-ellipsis">
-      Doctor command
+      How to use rules
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#missing-env-vars" class="md-nav__link">
+  <a href="#condition-variables" class="md-nav__link">
     <span class="md-ellipsis">
-      Missing env vars
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Missing env vars">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alternatives" class="md-nav__link">
-    <span class="md-ellipsis">
-      Alternatives
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ask-for-help" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ask for help
+      Condition variables
     </span>
   </a>
   
@@ -1455,83 +1502,191 @@
   
 
 
-<h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h1>
-<h2 id="logs-stderr">Logs (stderr)<a class="headerlink" href="#logs-stderr" title="Permanent link">#</a></h2>
-<p>All supported editors have options to set the <strong>server args</strong> to help with that and options to check the server logs.</p>
-<p>To change and access the logs:</p>
-<h3 id="server-logs">Server logs<a class="headerlink" href="#server-logs" title="Permanent link">#</a></h3>
-<p>This controls what's logged by server on its actions, you can control to log more things via <code>--log-level debug</code> server arg.
-This should help log LLM outputs, and other useful stuff.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="emacs" name="__tabbed_1" type="radio" /><input id="vscode" name="__tabbed_1" type="radio" /><input id="intellij" name="__tabbed_1" type="radio" /><input id="nvim" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="emacs">Emacs</label><label for="vscode">VsCode</label><label for="intellij">IntelliJ</label><label for="nvim">Nvim</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">eca-extra-args</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;--log-level&quot;</span><span class="w"> </span><span class="s">&quot;debug&quot;</span><span class="p">))</span>
-</code></pre></div>
-<p><code>M-x</code> <code>eca-show-stderr</code></p>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><span class="filename">your-json-preferences</span><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;eca.serverArgs&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;--log-level debug&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Check the output channel <code>ECA stderr</code>.</p>
-</div>
-<div class="tabbed-block">
-<p>Add to <code>Tools</code> &gt; <code>ECA</code> &gt; <code>Server args</code>: <code>--log-level debug</code></p>
-<p>Via action 'ECA: Show server logs'.</p>
-</div>
-<div class="tabbed-block">
-<p><code>EcaShowLogs</code> </p>
-</div>
-</div>
-</div>
-<h3 id="client-server-logs">Client&lt;-&gt;Server logs<a class="headerlink" href="#client-server-logs" title="Permanent link">#</a></h3>
-<p>ECA works with clients (editors) sending and receiving messages to server, a process, you can start server <code>--verbose</code> which should log all jsonrpc communication between client and server to <code>stderr</code> buffer like what is being sent to LLMs or what ECA is responding to editors. </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="emacs_1" name="__tabbed_2" type="radio" /><input id="vscode_1" name="__tabbed_2" type="radio" /><input id="intellij_1" name="__tabbed_2" type="radio" /><input id="nvim_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="emacs_1">Emacs</label><label for="vscode_1">VsCode</label><label for="intellij_1">IntelliJ</label><label for="nvim_1">Nvim</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">eca-extra-args</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;--verbose&quot;</span><span class="p">))</span>
-</code></pre></div>
-<p><code>M-x</code> <code>eca-show-stderr</code></p>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><span class="filename">your-json-preferences</span><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;eca.serverArgs&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;--verbose&quot;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Check the output channel <code>ECA stderr</code>.</p>
-</div>
-<div class="tabbed-block">
-<p>Add to <code>Tools</code> &gt; <code>ECA</code> &gt; <code>Server args</code>: <code>--verbose</code></p>
-<p>Via action 'ECA: Show server logs'.</p>
-</div>
-<div class="tabbed-block">
-<p><code>EcaShowLogs</code> </p>
-</div>
-</div>
-</div>
-<h2 id="doctor-command">Doctor command<a class="headerlink" href="#doctor-command" title="Permanent link">#</a></h2>
-<p><code>/doctor</code> command should log useful information to debug model used, server version, env vars and more.</p>
-<h2 id="missing-env-vars">Missing env vars<a class="headerlink" href="#missing-env-vars" title="Permanent link">#</a></h2>
-<p>When launching editors from a GUI application (Dock, Applications folder, or desktop environment), high chance that it won't inherit environment variables from your shell configuration files (<code>.zshrc</code>, <code>.bashrc</code>, etc.). Since the ECA server is started as a subprocess from editor, it inherits the editor environment, which may be missing your API keys and other configuration.</p>
-<p>You can check if the env vars are available via <code>/doctor</code>.</p>
-<p>One way to workaround that is to start the editor from your terminal.</p>
-<h3 id="alternatives">Alternatives<a class="headerlink" href="#alternatives" title="Permanent link">#</a></h3>
+<h1 id="rules">Rules<a class="headerlink" href="#rules" title="Permanent link">#</a></h1>
+<p>Rules let you influence how the model behaves without changing an agent prompt. Use them for coding standards, review checklists, project conventions, safety constraints, or file-specific guidance.</p>
+<p>A rule is a Markdown file. By default, rule content is rendered into the system prompt for every chat where the rule matches. Add YAML frontmatter when a rule should apply only to specific agents, models, or paths.</p>
+<h2 id="rules-vs-skills">Rules vs Skills<a class="headerlink" href="#rules-vs-skills" title="Permanent link">#</a></h2>
 <ul>
-<li>
-<p>Start the editor from your terminal.</p>
-</li>
-<li>
-<p>Set variables in your editor if supported, example in Emacs: <code>(setenv "MY_ENV" "my-value")</code></p>
-</li>
-<li>
-<p>On macOS, you can set environment variables system-wide using <code>launchctl</code>:</p>
-</li>
+<li>Use rules to make ECA automatically follow project conventions, safety constraints, or guidance for matching paths.</li>
+<li>Use <a href="../skills/">skills</a> to teach ECA reusable workflows, tools, or domain knowledge it can load on demand for specific tasks.</li>
 </ul>
-<div class="highlight"><pre><span></span><code>launchctl<span class="w"> </span>setenv<span class="w"> </span>ANTHROPIC_API_KEY<span class="w"> </span><span class="s2">&quot;your-key-here&quot;</span>
+<h2 id="rule-locations">Rule locations<a class="headerlink" href="#rule-locations" title="Permanent link">#</a></h2>
+<p>ECA loads rules from 3 sources:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="project-file" name="__tabbed_1" type="radio" /><input id="global-file" name="__tabbed_1" type="radio" /><input id="config" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="project-file">Project file</label><label for="global-file">Global file</label><label for="config">Config</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Files inside <code>.eca/rules</code> under a workspace root.</p>
+<div class="highlight"><span class="filename">.eca/rules/code-style.md</span><pre><span></span><code>Prefer small, focused functions and idiomatic Clojure.
 </code></pre></div>
-<h2 id="ask-for-help">Ask for help<a class="headerlink" href="#ask-for-help" title="Permanent link">#</a></h2>
-<p>You can ask for help via chat <a href="https://clojurians.slack.com/archives/C093426FPUG">here</a></p>
+</div>
+<div class="tabbed-block">
+<p>Files inside <code>$XDG_CONFIG_HOME/eca/rules</code> or <code>~/.config/eca/rules</code>.</p>
+<div class="highlight"><span class="filename">~/.config/eca/rules/answers.md</span><pre><span></span><code>Be concise and explain trade-offs when suggesting code changes.
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Paths listed in the <code>rules</code> config key. <code>path</code> can point to a single rule file or a directory. Directories are loaded recursively, loading all files within. Relative paths are searched from each workspace root. Absolute paths inside a workspace behave as project rules; absolute paths outside workspaces behave as global rules.</p>
+<div class="highlight"><span class="filename">~/.config/eca/config.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;rules&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;my-rule.md&quot;</span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">~/.config/eca/config.json</span><pre><span></span><code><span class="c1">// Load all rules from a directory recursively</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;rules&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="s2">&quot;path&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/home/user/rules&quot;</span><span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="static-and-path-scoped-rules">Static and path-scoped rules<a class="headerlink" href="#static-and-path-scoped-rules" title="Permanent link">#</a></h2>
+<p>Most rules should be <strong>static rules</strong>: rules without <code>paths</code>. Their full content is automatically included in the system prompt. Use them for guidance that should always be available, such as coding style, response tone, or repository-wide conventions.</p>
+<div class="highlight"><span class="filename">.eca/rules/clojure-style.md</span><pre><span></span><code>Prefer immutable data, kebab-case names, and small functions.
+</code></pre></div>
+<p>Use <strong>path-scoped rules</strong> when the guidance only matters for matching files. Add <code>paths</code> in frontmatter. Instead of injecting the full rule into every prompt, ECA lists a small catalog of matching path-scoped rules. The model can then call <code>fetch_rule</code> with the exact rule id and target path to load the full content when needed.</p>
+<div class="highlight"><span class="filename">.eca/rules/html-style.md</span><pre><span></span><code>---
+<span class="gu">paths: &quot;**.html&quot;</span>
+<span class="gu">---</span>
+
+Use semantic HTML and keep accessibility in mind.
+</code></pre></div>
+<p>If <code>fetch_rule</code> is unavailable in the current chat, path-scoped rules are treated as inactive and are omitted from the prompt. Use the <code>/rules</code> command to inspect which rules are available for the current agent and model.</p>
+<h2 id="frontmatter">Frontmatter<a class="headerlink" href="#frontmatter" title="Permanent link">#</a></h2>
+<p>Rules support YAML frontmatter. Recognized fields are <code>agent</code>, <code>model</code>, <code>paths</code>, and <code>enforce</code>. Rules without frontmatter are static rules that apply to all agents and models.</p>
+<h3 id="agent"><code>agent</code><a class="headerlink" href="#agent" title="Permanent link">#</a></h3>
+<p>Restricts a rule to one agent or a list of agents.</p>
+<div class="highlight"><span class="filename">.eca/rules/code-only.md</span><pre><span></span><code>---
+<span class="gu">agent: code</span>
+<span class="gu">---</span>
+
+Prefer making the smallest safe code change.
+</code></pre></div>
+<div class="highlight"><span class="filename">.eca/rules/shared.md</span><pre><span></span><code>---
+agent:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>code
+<span class="gu">  - plan</span>
+<span class="gu">---</span>
+
+Call out risky assumptions before proceeding.
+</code></pre></div>
+<h3 id="model"><code>model</code><a class="headerlink" href="#model" title="Permanent link">#</a></h3>
+<p>Restricts a rule to models whose full model identifier matches a regex pattern. The full identifier includes the provider, such as <code>anthropic/claude-sonnet-4-20250514</code> or <code>openai/gpt-5.2</code>.</p>
+<div class="highlight"><span class="filename">.eca/rules/high-reasoning-models.md</span><pre><span></span><code>---
+model:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>&quot;.*claude-sonnet-4.*&quot;
+<span class="gu">  - &quot;.*gpt-5.*&quot;</span>
+<span class="gu">---</span>
+
+Spend more time validating edge cases before editing.
+</code></pre></div>
+<p>Patterns are partial-match regexes using <code>re-find</code>, so <code>gpt-4</code> also matches <code>openai/gpt-4o-mini</code>. Use anchors (<code>^...$</code>) when you need an exact match.</p>
+<h3 id="paths"><code>paths</code><a class="headerlink" href="#paths" title="Permanent link">#</a></h3>
+<p>Marks a rule as path-scoped. It accepts one glob pattern or a list of patterns matched against workspace-relative paths.</p>
+<div class="highlight"><span class="filename">.eca/rules/frontend.md</span><pre><span></span><code>---
+paths:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>&quot;src/**.{ts,tsx}&quot;
+<span class="gu">  - &quot;lib/**.ts&quot;</span>
+<span class="gu">---</span>
+
+Follow the project&#39;s frontend conventions.
+</code></pre></div>
+<p>For project rules, patterns are matched relative to the workspace root that owns the rule. For global rules, patterns can match files inside any current workspace root.</p>
+<p>Path matching uses Java NIO <code>PathMatcher</code> glob syntax. Common patterns:</p>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Matches</th>
+<th>Does not match</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>src/*.clj</code></td>
+<td><code>src/foo.clj</code></td>
+<td><code>src/nested/foo.clj</code></td>
+</tr>
+<tr>
+<td><code>src/**/*.clj</code></td>
+<td><code>src/nested/foo.clj</code></td>
+<td><code>src/foo.clj</code></td>
+</tr>
+<tr>
+<td><code>src/**.clj</code></td>
+<td><code>src/foo.clj</code>, <code>src/nested/foo.clj</code></td>
+<td><code>test/foo.clj</code></td>
+</tr>
+<tr>
+<td><code>docs/**.md</code></td>
+<td><code>docs/index.md</code>, <code>docs/config/rules.md</code></td>
+<td><code>src/docs.md</code></td>
+</tr>
+</tbody>
+</table>
+<p>Unlike many shell glob matchers, <code>**/</code> does not match the zero-directory case. For example, <code>src/**/*.clj</code> matches <code>src/nested/foo.clj</code>, but not <code>src/foo.clj</code>. Use <code>src/**.clj</code> or <code>{src/*.clj,src/**/*.clj}</code> when you need both.</p>
+<h3 id="enforce"><code>enforce</code><a class="headerlink" href="#enforce" title="Permanent link">#</a></h3>
+<p><code>enforce</code> only applies to path-scoped rules. It has no effect without <code>paths</code>, because static rules are already included in the system prompt.</p>
+<p>For matching path-scoped rules, <code>enforce</code> controls when ECA requires the rule to be fetched before a builtin file tool proceeds.</p>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>modify</code></td>
+<td>Fetch before modifying a matching file. This is the default.</td>
+</tr>
+<tr>
+<td><code>read</code></td>
+<td>Fetch before reading a matching file with <code>read_file</code>.</td>
+</tr>
+<tr>
+<td><code>[read, modify]</code></td>
+<td>Fetch before both reading and modifying.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><span class="filename">.eca/rules/api-style.md</span><pre><span></span><code>---
+<span class="gu">paths: &quot;src/api/**.ts&quot;</span>
+<span class="gu">---</span>
+
+Follow the API naming and error-response conventions.
+</code></pre></div>
+<div class="highlight"><span class="filename">.eca/rules/sensitive-data.md</span><pre><span></span><code>---
+paths: &quot;src/data/**.clj&quot;
+enforce:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>read
+<span class="gu">  - modify</span>
+<span class="gu">---</span>
+
+Never expose PII fields in API responses.
+</code></pre></div>
+<p>When <code>enforce</code> is omitted, it defaults to <code>modify</code>.</p>
+<h2 id="how-to-use-rules">How to use rules<a class="headerlink" href="#how-to-use-rules" title="Permanent link">#</a></h2>
+<p>Use this rule of thumb:</p>
+<ul>
+<li>Use a static rule when the model should always know the instruction.</li>
+<li>Use a path-scoped rule when the instruction only matters for certain files.</li>
+<li>Add <code>enforce: read</code> or <code>enforce: modify</code> when the model must fetch the matching rule before using the corresponding builtin file tool.</li>
+<li>Use <code>agent</code> and <code>model</code> filters when the rule is only relevant for specific chat modes or model families.</li>
+</ul>
+<p>Path-scoped rules keep the base prompt smaller while still making file-specific guidance available. When the model calls <code>fetch_rule</code>, ECA validates the exact rule id and absolute target path, renders the rule content, and records that the rule was fetched in the current chat. You can also use this to influence behavior for a specific provider. For example, if you want more tool calls instead of user prompts, you can do something like:
+<div class="highlight"><span class="filename">.eca/rules/copilot-ask-user.md</span><pre><span></span><code>---
+<span class="gu">model: &quot;github-copilot/.*&quot;</span>
+<span class="gu">---</span>
+
+Strongly prefer using the <span class="sb">`eca__ask_user`</span> tool over ending your turn or asking questions inline in your response.
+</code></pre></div></p>
+<h2 id="condition-variables">Condition variables<a class="headerlink" href="#condition-variables" title="Permanent link">#</a></h2>
+<p>Rules support <a href="../template/#condition-variables">template variables</a> using <a href="https://github.com/yogthos/Selmer">Selmer</a>. If a rule renders to an empty string, ECA skips it.</p>
+<div class="highlight"><span class="filename">.eca/rules/context-aware.md</span><pre><span></span><code>{% if isSubagent %}
+Be concise and return only the final result.
+{% else %}
+Provide explanations and mention important trade-offs.
+{% endif %}
+</code></pre></div>
 
 
 
@@ -1583,17 +1738,28 @@ This should help log LLM outputs, and other useful stuff.</p>
   
   <nav class="md-footer__inner md-grid" aria-label="Footer" >
     
-    <a href="../protocol/" class="md-footer__link md-footer__link--prev">
+    <a href="../skills/" class="md-footer__link md-footer__link--prev">
       <div class="md-footer__button md-icon">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </div>
       <div class="md-footer__title">
         <span class="md-footer__direction">Previous</span>
-        <span class="md-ellipsis">Protocol</span>
+        <span class="md-ellipsis">Skills</span>
       </div>
     </a>
     
+    
+    <a href="../commands/" class="md-footer__link md-footer__link--next">
+      <div class="md-footer__title">
+        <span class="md-footer__direction">Next</span>
+        <span class="md-ellipsis">Commands</span>
+      </div>
+      <div class="md-footer__button md-icon">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+      </div>
+    </a>
     
   </nav>
   
@@ -1655,10 +1821,10 @@ This should help log LLM outputs, and other useful stuff.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.expand", "navigation.sections", "content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.sections", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
     
   </body>

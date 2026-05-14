@@ -6,27 +6,29 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Troubleshoot common ECA issues: connection problems, provider errors, tool failures, and performance optimization.">
+        <meta name="description" content="Configure ECA Remote: control your ECA session from a web browser.">
       
       
       
-        <link rel="canonical" href="https://eca.dev/troubleshooting/">
+        <link rel="canonical" href="https://eca.dev/config/remote/">
       
       
-        <link rel="prev" href="../protocol/">
+        <link rel="prev" href="../metrics/">
       
       
+        <link rel="next" href="../network/">
       
-      <link rel="icon" href="../images/logo.svg">
+      
+      <link rel="icon" href="../../images/logo.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
-        <title>Troubleshooting - ECA - Editor Code Assistant</title>
+        <title>Remote - ECA - Editor Code Assistant</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
       
 
@@ -45,9 +47,9 @@
       
     
     
-      <link rel="stylesheet" href="../stylesheets/layout.css">
+      <link rel="stylesheet" href="../../stylesheets/layout.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -76,9 +78,9 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Troubleshooting - ECA - Editor Code Assistant" />
-  <meta property="og:description" content="Troubleshoot common ECA issues: connection problems, provider errors, tool failures, and performance optimization." />
-  <meta property="og:url" content="https://eca.dev/troubleshooting/" />
+  <meta property="og:title" content="Remote - ECA - Editor Code Assistant" />
+  <meta property="og:description" content="Configure ECA Remote: control your ECA session from a web browser." />
+  <meta property="og:url" content="https://eca.dev/config/remote/" />
   <meta property="og:image" content="https://eca.dev/images/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -86,8 +88,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Troubleshooting - ECA - Editor Code Assistant" />
-  <meta name="twitter:description" content="Troubleshoot common ECA issues: connection problems, provider errors, tool failures, and performance optimization." />
+  <meta name="twitter:title" content="Remote - ECA - Editor Code Assistant" />
+  <meta name="twitter:description" content="Configure ECA Remote: control your ECA session from a web browser." />
   <meta name="twitter:image" content="https://eca.dev/images/og-image.png" />
 
   </head>
@@ -102,7 +104,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#troubleshooting" class="md-skip">
+        <a href="#remote" class="md-skip">
           Skip to content
         </a>
       
@@ -116,9 +118,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="ECA - Editor Code Assistant" class="md-header__button md-logo" aria-label="ECA - Editor Code Assistant" data-md-component="logo">
+    <a href="../.." title="ECA - Editor Code Assistant" class="md-header__button md-logo" aria-label="ECA - Editor Code Assistant" data-md-component="logo">
       
-  <img src="../images/logo.svg" alt="logo">
+  <img src="../../images/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -135,7 +137,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Troubleshooting
+              Remote
             
           </span>
         </div>
@@ -222,7 +224,7 @@
     
     
       <li class="md-tabs__item">
-        <a href=".." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
   
@@ -242,7 +244,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../features/" class="md-tabs__link">
+        <a href="../../features/" class="md-tabs__link">
           
   
   
@@ -262,7 +264,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../install/" class="md-tabs__link">
+        <a href="../../install/" class="md-tabs__link">
           
   
   
@@ -278,11 +280,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../config/introduction/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../introduction/" class="md-tabs__link">
           
   
   
@@ -300,7 +304,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../protocol/" class="md-tabs__link">
+      <a href="../../protocol/" class="md-tabs__link">
         
   
   
@@ -317,11 +321,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../troubleshooting/" class="md-tabs__link">
         
   
   
@@ -394,9 +396,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="ECA - Editor Code Assistant" class="md-nav__button md-logo" aria-label="ECA - Editor Code Assistant" data-md-component="logo">
+    <a href="../.." title="ECA - Editor Code Assistant" class="md-nav__button md-logo" aria-label="ECA - Editor Code Assistant" data-md-component="logo">
       
-  <img src="../images/logo.svg" alt="logo">
+  <img src="../../images/logo.svg" alt="logo">
 
     </a>
     ECA - Editor Code Assistant
@@ -468,7 +470,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -543,7 +545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../features/" class="md-nav__link">
+      <a href="../../features/" class="md-nav__link">
         
   
   
@@ -566,7 +568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workflows/" class="md-nav__link">
+      <a href="../../workflows/" class="md-nav__link">
         
   
   
@@ -641,7 +643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../install/" class="md-nav__link">
+      <a href="../../install/" class="md-nav__link">
         
   
   
@@ -668,28 +670,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   
@@ -702,7 +707,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Configuration
@@ -716,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/introduction/" class="md-nav__link">
+      <a href="../introduction/" class="md-nav__link">
         
   
   
@@ -739,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/template/" class="md-nav__link">
+      <a href="../template/" class="md-nav__link">
         
   
   
@@ -762,7 +767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/models/" class="md-nav__link">
+      <a href="../models/" class="md-nav__link">
         
   
   
@@ -785,7 +790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/tools/" class="md-nav__link">
+      <a href="../tools/" class="md-nav__link">
         
   
   
@@ -808,7 +813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/variants/" class="md-nav__link">
+      <a href="../variants/" class="md-nav__link">
         
   
   
@@ -831,7 +836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/skills/" class="md-nav__link">
+      <a href="../skills/" class="md-nav__link">
         
   
   
@@ -854,7 +859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/rules/" class="md-nav__link">
+      <a href="../rules/" class="md-nav__link">
         
   
   
@@ -877,7 +882,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/commands/" class="md-nav__link">
+      <a href="../commands/" class="md-nav__link">
         
   
   
@@ -900,7 +905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/agents/" class="md-nav__link">
+      <a href="../agents/" class="md-nav__link">
         
   
   
@@ -923,7 +928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/hooks/" class="md-nav__link">
+      <a href="../hooks/" class="md-nav__link">
         
   
   
@@ -946,7 +951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/completion/" class="md-nav__link">
+      <a href="../completion/" class="md-nav__link">
         
   
   
@@ -969,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/rewrite/" class="md-nav__link">
+      <a href="../rewrite/" class="md-nav__link">
         
   
   
@@ -992,7 +997,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/context-management/" class="md-nav__link">
+      <a href="../context-management/" class="md-nav__link">
         
   
   
@@ -1015,7 +1020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/plugins/" class="md-nav__link">
+      <a href="../plugins/" class="md-nav__link">
         
   
   
@@ -1038,7 +1043,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/metrics/" class="md-nav__link">
+      <a href="../metrics/" class="md-nav__link">
         
   
   
@@ -1058,10 +1063,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../config/remote/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Remote
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1072,6 +1099,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#connection-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection Methods
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#config-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Config Options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web UI
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1084,7 +1158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/network/" class="md-nav__link">
+      <a href="../network/" class="md-nav__link">
         
   
   
@@ -1107,7 +1181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../config/examples/" class="md-nav__link">
+      <a href="../examples/" class="md-nav__link">
         
   
   
@@ -1137,7 +1211,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../protocol/" class="md-nav__link">
+      <a href="../../protocol/" class="md-nav__link">
         
   
   
@@ -1156,32 +1230,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Troubleshooting
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../troubleshooting/" class="md-nav__link">
         
   
   
@@ -1192,101 +1244,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#logs-stderr" class="md-nav__link">
-    <span class="md-ellipsis">
-      Logs (stderr)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Logs (stderr)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#server-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Server logs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#client-server-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Client&lt;-&gt;Server logs
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#doctor-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      Doctor command
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#missing-env-vars" class="md-nav__link">
-    <span class="md-ellipsis">
-      Missing env vars
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Missing env vars">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alternatives" class="md-nav__link">
-    <span class="md-ellipsis">
-      Alternatives
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ask-for-help" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ask for help
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1362,75 +1319,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#logs-stderr" class="md-nav__link">
+  <a href="#connection-methods" class="md-nav__link">
     <span class="md-ellipsis">
-      Logs (stderr)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Logs (stderr)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#server-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Server logs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#client-server-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      Client&lt;-&gt;Server logs
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#doctor-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      Doctor command
+      Connection Methods
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#missing-env-vars" class="md-nav__link">
+  <a href="#config-options" class="md-nav__link">
     <span class="md-ellipsis">
-      Missing env vars
+      Config Options
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Missing env vars">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alternatives" class="md-nav__link">
-    <span class="md-ellipsis">
-      Alternatives
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ask-for-help" class="md-nav__link">
+  <a href="#web-ui" class="md-nav__link">
     <span class="md-ellipsis">
-      Ask for help
+      Web UI
     </span>
   </a>
   
@@ -1455,83 +1364,125 @@
   
 
 
-<h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h1>
-<h2 id="logs-stderr">Logs (stderr)<a class="headerlink" href="#logs-stderr" title="Permanent link">#</a></h2>
-<p>All supported editors have options to set the <strong>server args</strong> to help with that and options to check the server logs.</p>
-<p>To change and access the logs:</p>
-<h3 id="server-logs">Server logs<a class="headerlink" href="#server-logs" title="Permanent link">#</a></h3>
-<p>This controls what's logged by server on its actions, you can control to log more things via <code>--log-level debug</code> server arg.
-This should help log LLM outputs, and other useful stuff.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="emacs" name="__tabbed_1" type="radio" /><input id="vscode" name="__tabbed_1" type="radio" /><input id="intellij" name="__tabbed_1" type="radio" /><input id="nvim" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="emacs">Emacs</label><label for="vscode">VsCode</label><label for="intellij">IntelliJ</label><label for="nvim">Nvim</label></div>
+<h1 id="remote">Remote<a class="headerlink" href="#remote" title="Permanent link">#</a></h1>
+<p>ECA Remote lets you control, approve, and observe your ECA session from a web browser.
+When enabled, ECA starts an embedded HTTPS server that the web frontend at <a href="https://web.eca.dev">web.eca.dev</a> connects to in real-time.</p>
+<p><img alt="" src="../../images/features/remote.png" /></p>
+<h2 id="connection-methods">Connection Methods<a class="headerlink" href="#connection-methods" title="Permanent link">#</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="lan--private-ips" name="__tabbed_1" type="radio" /><input id="vpn--tailscale" name="__tabbed_1" type="radio" /><input id="local-docker" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="lan--private-ips">LAN / Private IPs</label><label for="vpn--tailscale">VPN / Tailscale</label><label for="local-docker">Local Docker</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">eca-extra-args</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;--log-level&quot;</span><span class="w"> </span><span class="s">&quot;debug&quot;</span><span class="p">))</span>
-</code></pre></div>
-<p><code>M-x</code> <code>eca-show-stderr</code></p>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><span class="filename">your-json-preferences</span><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;eca.serverArgs&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;--log-level debug&quot;</span>
+<p>The simplest approach — connect directly from <code>https://web.eca.dev</code> to your machine on the local network. Works in all browsers with no extra setup.</p>
+<p><strong>Config:</strong></p>
+<div class="highlight"><span class="filename">~/.config/eca/config.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;remote&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;enabled&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;password&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;something&quot;</span><span class="w"> </span><span class="c1">// optional — or ${env:MY_PASS}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Check the output channel <code>ECA stderr</code>.</p>
-</div>
-<div class="tabbed-block">
-<p>Add to <code>Tools</code> &gt; <code>ECA</code> &gt; <code>Server args</code>: <code>--log-level debug</code></p>
-<p>Via action 'ECA: Show server logs'.</p>
-</div>
-<div class="tabbed-block">
-<p><code>EcaShowLogs</code> </p>
-</div>
-</div>
-</div>
-<h3 id="client-server-logs">Client&lt;-&gt;Server logs<a class="headerlink" href="#client-server-logs" title="Permanent link">#</a></h3>
-<p>ECA works with clients (editors) sending and receiving messages to server, a process, you can start server <code>--verbose</code> which should log all jsonrpc communication between client and server to <code>stderr</code> buffer like what is being sent to LLMs or what ECA is responding to editors. </p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="emacs_1" name="__tabbed_2" type="radio" /><input id="vscode_1" name="__tabbed_2" type="radio" /><input id="intellij_1" name="__tabbed_2" type="radio" /><input id="nvim_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="emacs_1">Emacs</label><label for="vscode_1">VsCode</label><label for="intellij_1">IntelliJ</label><label for="nvim_1">Nvim</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="p">(</span><span class="k">setq</span><span class="w"> </span><span class="nv">eca-extra-args</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="s">&quot;--verbose&quot;</span><span class="p">))</span>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>
+<p>Start ECA — it logs a connection URL you can open directly:</p>
+<div class="highlight"><pre><span></span><code>https://web.eca.dev?host=192-168-1-42.local.eca.dev:7777&amp;pass=a3f8b&amp;protocol=https
 </code></pre></div>
-<p><code>M-x</code> <code>eca-show-stderr</code></p>
+</li>
+<li>
+<p>Or open <code>https://web.eca.dev</code>, enter your machine's LAN IP (e.g. <code>192.168.1.42</code>) and password — the web UI automatically resolves it to the secure <code>*.local.eca.dev</code> hostname.</p>
+</li>
+</ol>
+<p>ECA ships with a TLS certificate for <code>*.local.eca.dev</code>. On startup, the server detects your LAN IP and serves HTTPS using a hostname like <code>192-168-1-42.local.eca.dev</code>, which resolves back to your IP via <a href="https://sslip.io">sslip.io</a> DNS. This gives you a valid HTTPS connection to a private IP — no mixed-content blocking, no browser prompts.</p>
+<div class="admonition note">
+<p class="admonition-title">Firewall</p>
+<p>Make sure your firewall allows incoming TCP on ports <code>7777</code>–<code>7796</code> from your LAN.
+ECA uses port <code>7777</code> by default and increments if busy.</p>
+</div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">your-json-preferences</span><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;eca.serverArgs&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;--verbose&quot;</span>
+<p>For connecting from outside your LAN. <a href="https://tailscale.com">Tailscale</a> (free) creates a secure private network between your devices with valid HTTPS certificates.</p>
+<p><strong>Config:</strong></p>
+<div class="highlight"><span class="filename">~/.config/eca/config.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;remote&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;enabled&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;password&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;something-here&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;my-machine.tail1234.ts.net&quot;</span><span class="w"> </span><span class="c1">// optional — used in the connect URL</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Check the output channel <code>ECA stderr</code>.</p>
-</div>
-<div class="tabbed-block">
-<p>Add to <code>Tools</code> &gt; <code>ECA</code> &gt; <code>Server args</code>: <code>--verbose</code></p>
-<p>Via action 'ECA: Show server logs'.</p>
-</div>
-<div class="tabbed-block">
-<p><code>EcaShowLogs</code> </p>
-</div>
-</div>
-</div>
-<h2 id="doctor-command">Doctor command<a class="headerlink" href="#doctor-command" title="Permanent link">#</a></h2>
-<p><code>/doctor</code> command should log useful information to debug model used, server version, env vars and more.</p>
-<h2 id="missing-env-vars">Missing env vars<a class="headerlink" href="#missing-env-vars" title="Permanent link">#</a></h2>
-<p>When launching editors from a GUI application (Dock, Applications folder, or desktop environment), high chance that it won't inherit environment variables from your shell configuration files (<code>.zshrc</code>, <code>.bashrc</code>, etc.). Since the ECA server is started as a subprocess from editor, it inherits the editor environment, which may be missing your API keys and other configuration.</p>
-<p>You can check if the env vars are available via <code>/doctor</code>.</p>
-<p>One way to workaround that is to start the editor from your terminal.</p>
-<h3 id="alternatives">Alternatives<a class="headerlink" href="#alternatives" title="Permanent link">#</a></h3>
-<ul>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>Install Tailscale and enable <a href="https://tailscale.com/kb/1153/enabling-https">HTTPS certificates</a></li>
 <li>
-<p>Start the editor from your terminal.</p>
-</li>
-<li>
-<p>Set variables in your editor if supported, example in Emacs: <code>(setenv "MY_ENV" "my-value")</code></p>
-</li>
-<li>
-<p>On macOS, you can set environment variables system-wide using <code>launchctl</code>:</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><code>launchctl<span class="w"> </span>setenv<span class="w"> </span>ANTHROPIC_API_KEY<span class="w"> </span><span class="s2">&quot;your-key-here&quot;</span>
+<p>Expose ECA's port via Tailscale HTTPS serve:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>tailscale<span class="w"> </span>serve<span class="w"> </span>--bg<span class="w"> </span>--https<span class="w"> </span><span class="m">7777</span><span class="w"> </span>https+insecure://localhost:7777
+sudo<span class="w"> </span>tailscale<span class="w"> </span>serve<span class="w"> </span>--bg<span class="w"> </span>--https<span class="w"> </span><span class="m">7778</span><span class="w"> </span>https+insecure://localhost:7778
+<span class="c1"># ... repeat for as many ports as you need (7777–7796)</span>
 </code></pre></div>
-<h2 id="ask-for-help">Ask for help<a class="headerlink" href="#ask-for-help" title="Permanent link">#</a></h2>
-<p>You can ask for help via chat <a href="https://clojurians.slack.com/archives/C093426FPUG">here</a></p>
+<div class="admonition warning">
+<p class="admonition-title">Use <code>--https</code>, not <code>--tcp</code></p>
+<p><code>--tcp</code> creates a raw TCP proxy that browsers cannot connect to.
+<code>--https</code> creates a proper HTTPS reverse proxy with valid certificates.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Why <code>https+insecure://</code>?</p>
+<p>ECA's built-in server runs HTTPS with a <code>*.local.eca.dev</code> certificate.
+Tailscale Serve must connect to it over TLS (<code>https+insecure://</code>), not plain
+HTTP. The <code>+insecure</code> flag tells Tailscale to skip certificate verification
+since the local cert won't match your Tailscale hostname.</p>
+</div>
+</li>
+<li>
+<p>Start ECA — it logs a connection URL you can open directly:</p>
+<div class="highlight"><pre><span></span><code>https://web.eca.dev?host=my-machine.tail1234.ts.net:7777&amp;pass=a3f8b&amp;protocol=https
+</code></pre></div>
+</li>
+<li>
+<p>Open <code>https://web.eca.dev</code> and enter your Tailscale hostname and password</p>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<p>Run the web frontend locally over HTTP — useful for development or restricted environments.</p>
+<p><strong>Config:</strong></p>
+<div class="highlight"><span class="filename">~/.config/eca/config.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;remote&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;enabled&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;password&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;something-here&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Steps:</strong></p>
+<ol>
+<li>
+<p>Run the web frontend locally via Docker:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--pull<span class="o">=</span>always<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:80<span class="w"> </span>ghcr.io/editor-code-assistant/eca-web
+</code></pre></div>
+</li>
+<li>
+<p>Open <code>http://localhost:8080</code> and connect to <code>localhost:7777</code></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<h2 id="config-options">Config Options<a class="headerlink" href="#config-options" title="Permanent link">#</a></h2>
+<div class="highlight"><span class="filename">~/.config/eca/config.json</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="s2">&quot;remote&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;enabled&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// optional — override the hostname in the connect URL (e.g. Tailscale DNS)</span>
+<span class="w">    </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;my-machine.tail1234.ts.net&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// optional — defaults to 7777, auto-increments up to 7796 if busy</span>
+<span class="w">    </span><span class="s2">&quot;port&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">9876</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// optional — auto-generated when unset, supports ${env:MY_PASS}</span>
+<span class="w">    </span><span class="s2">&quot;password&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;my-secret-token&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="web-ui">Web UI<a class="headerlink" href="#web-ui" title="Permanent link">#</a></h2>
+<p>The web frontend provides a connect form where you enter the host and password (or use the deep-link URL logged by ECA).</p>
+<p><strong>Auto-discovery</strong> — When you enter a host and click "Discover &amp; Connect", the web UI scans ports <code>7777</code>–<code>7796</code> in parallel and finds all running ECA instances automatically.</p>
+<p><strong>Multi-session</strong> — You can connect to multiple ECA instances simultaneously. Each connection appears as a tab in the top bar.</p>
 
 
 
@@ -1583,17 +1534,28 @@ This should help log LLM outputs, and other useful stuff.</p>
   
   <nav class="md-footer__inner md-grid" aria-label="Footer" >
     
-    <a href="../protocol/" class="md-footer__link md-footer__link--prev">
+    <a href="../metrics/" class="md-footer__link md-footer__link--prev">
       <div class="md-footer__button md-icon">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </div>
       <div class="md-footer__title">
         <span class="md-footer__direction">Previous</span>
-        <span class="md-ellipsis">Protocol</span>
+        <span class="md-ellipsis">Metrics</span>
       </div>
     </a>
     
+    
+    <a href="../network/" class="md-footer__link md-footer__link--next">
+      <div class="md-footer__title">
+        <span class="md-footer__direction">Next</span>
+        <span class="md-ellipsis">Network / Enterprise</span>
+      </div>
+      <div class="md-footer__button md-icon">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+      </div>
+    </a>
     
   </nav>
   
@@ -1655,10 +1617,10 @@ This should help log LLM outputs, and other useful stuff.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.expand", "navigation.sections", "content.code.copy", "content.code.select"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.expand", "navigation.sections", "content.code.copy", "content.code.select"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
     
   </body>
