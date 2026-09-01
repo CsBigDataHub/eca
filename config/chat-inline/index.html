@@ -6,17 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="How ECA manages context window size: output truncation, auto-compaction, and automatic overflow recovery.">
+        <meta name="description" content="Configure ECA inline chat: ask from any buffer and render the answer inline, backed by a regular chat.">
       
       
       
-        <link rel="canonical" href="https://eca.dev/config/context-management/">
+        <link rel="canonical" href="https://eca.dev/config/chat-inline/">
       
       
-        <link rel="prev" href="../chat-inline/">
+        <link rel="prev" href="../rewrite/">
       
       
-        <link rel="next" href="../plugins/">
+        <link rel="next" href="../context-management/">
       
       
       <link rel="icon" href="../../images/logo.svg">
@@ -24,7 +24,7 @@
     
     
       
-        <title>Context Management - ECA - Editor Code Assistant</title>
+        <title>Inline chat - ECA - Editor Code Assistant</title>
       
     
     
@@ -78,9 +78,9 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Context Management - ECA - Editor Code Assistant" />
-  <meta property="og:description" content="How ECA manages context window size: output truncation, auto-compaction, and automatic overflow recovery." />
-  <meta property="og:url" content="https://eca.dev/config/context-management/" />
+  <meta property="og:title" content="Inline chat - ECA - Editor Code Assistant" />
+  <meta property="og:description" content="Configure ECA inline chat: ask from any buffer and render the answer inline, backed by a regular chat." />
+  <meta property="og:url" content="https://eca.dev/config/chat-inline/" />
   <meta property="og:image" content="https://eca.dev/images/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -88,8 +88,8 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Context Management - ECA - Editor Code Assistant" />
-  <meta name="twitter:description" content="How ECA manages context window size: output truncation, auto-compaction, and automatic overflow recovery." />
+  <meta name="twitter:title" content="Inline chat - ECA - Editor Code Assistant" />
+  <meta name="twitter:description" content="Configure ECA inline chat: ask from any buffer and render the answer inline, backed by a regular chat." />
   <meta name="twitter:image" content="https://eca.dev/images/og-image.png" />
 
   </head>
@@ -104,7 +104,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#context-window-management" class="md-skip">
+        <a href="#inline-chat" class="md-skip">
           Skip to content
         </a>
       
@@ -137,7 +137,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Context Management
+              Inline chat
             
           </span>
         </div>
@@ -994,29 +994,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../chat-inline/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Inline chat
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1029,20 +1006,31 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
   
   
   <span class="md-ellipsis">
-    Context Management
+    Inline chat
     
   </span>
   
 
-          <span class="md-nav__icon md-icon"></span>
-        </label>
+      </a>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../context-management/" class="md-nav__link">
         
   
   
@@ -1053,62 +1041,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#output-truncation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Output Truncation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#auto-compact" class="md-nav__link">
-    <span class="md-ellipsis">
-      Auto-compact
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#context-overflow-recovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      Context overflow recovery
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#file-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      File Reading
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1367,50 +1299,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#output-truncation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Output Truncation
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#auto-compact" class="md-nav__link">
-    <span class="md-ellipsis">
-      Auto-compact
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#context-overflow-recovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      Context overflow recovery
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#file-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      File Reading
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1428,107 +1316,25 @@
   
 
 
-<h1 id="context-window-management">Context window management<a class="headerlink" href="#context-window-management" title="Permanent link">#</a></h1>
-<p>ECA manages the context window through four layers of defense, each addressing a different stage of the problem:</p>
-<ol>
-<li><strong>Output Truncation</strong> — prevents individual tool outputs from being too large.</li>
-<li><strong>Auto-compact</strong> — proactively summarizes the conversation before it reaches the model's limit.</li>
-<li><strong>Context overflow recovery</strong> — reactively handles the case when the context exceeds the limit despite the above.</li>
-<li><strong>Max lines for read_file</strong> — sets a max number of lines that when LLM tries to full read the file will use (default: 2000).</li>
-</ol>
-<h2 id="output-truncation">Output Truncation<a class="headerlink" href="#output-truncation" title="Permanent link">#</a></h2>
-<p>ECA automatically truncates tool call outputs that are too large before sending them to the LLM. When output exceeds the configured limits, ECA:</p>
-<ol>
-<li>Saves the full output to a cache file in <code>~/.cache/eca/toolCallOutputs</code> (cleaned every 30 days, configurable via <code>chatRetentionDays</code>).</li>
-<li>Truncates the output to the configured line limit.</li>
-<li>Appends an <code>[OUTPUT TRUNCATED]</code> notice telling the LLM where the full content is saved and suggesting it use <code>eca__grep</code> or <code>eca__read_file</code> with offset/limit to access the rest.</li>
-</ol>
-<p>You can customize the truncation limits via <code>toolCall.outputTruncation</code>:</p>
+<p><img alt="" src="../../images/features/inline-chat.gif" /></p>
+<h1 id="inline-chat">Inline chat<a class="headerlink" href="#inline-chat" title="Permanent link">#</a></h1>
+<p>Editors use the <code>chat/inlinePrompt</code> protocol method to ask ECA from any buffer and render the answer inline (e.g. an overlay near the cursor). The session is a regular chat behind the scenes: tool calls, approvals and follow-ups work as usual, and it can fork an existing chat to reuse its history as context.</p>
+<p>Configure the model, agent, and variant used for inline chats via the <code>chatInline</code> config. By default, ECA follows the same selection as chat (or the source chat when forking) unless overwritten:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="example" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="example">Example</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><span class="filename">~/.config/eca/config.json</span><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;toolCall&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;outputTruncation&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="s2">&quot;lines&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1000</span><span class="p">,</span>
-<span class="w">      </span><span class="s2">&quot;sizeKb&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="s2">&quot;chatInline&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="s2">&quot;model&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;github-copilot/gpt-4.1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;agent&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;code&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;variant&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;low&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>lines</code></td>
-<td><code>2000</code></td>
-<td>Maximum number of lines in tool output.</td>
-</tr>
-<tr>
-<td><code>sizeKb</code></td>
-<td><code>50</code></td>
-<td>Maximum size in kilobytes for tool output.</td>
-</tr>
-</tbody>
-</table>
-<p>Either limit being exceeded will trigger truncation.</p>
-<h2 id="auto-compact">Auto-compact<a class="headerlink" href="#auto-compact" title="Permanent link">#</a></h2>
-<p>After each LLM response, ECA checks how much of the model's context window has been used. When usage reaches the configured threshold, ECA automatically compacts the conversation by asking the LLM to produce a structured summary, then replaces the full chat history with that summary and resumes the original task.</p>
-<p>You can configure the threshold via <code>autoCompactPercentage</code>:</p>
-<div class="highlight"><span class="filename">~/.config/eca/config.json</span><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;autoCompactPercentage&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">75</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>This can also be set per-agent:</p>
-<div class="highlight"><span class="filename">~/.config/eca/config.json</span><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;agent&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;code&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="s2">&quot;autoCompactPercentage&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">80</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>autoCompactPercentage</code></td>
-<td><code>75</code></td>
-<td>Percentage of context window usage that triggers auto-compaction.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="context-overflow-recovery">Context overflow recovery<a class="headerlink" href="#context-overflow-recovery" title="Permanent link">#</a></h2>
-<p>In some cases the context window can jump from below the auto-compact threshold to above the model's maximum in a single turn — for example, when multiple large tool results arrive at once. When this happens, the LLM provider rejects the request with a "prompt too long" error.</p>
-<p>Instead of showing this error to the user, ECA automatically recovers:</p>
-<ol>
-<li><strong>Detects the overflow</strong> — classifies the provider error (works across Anthropic, OpenAI, Google, Ollama, and custom providers).</li>
-<li><strong>Prunes old tool results</strong> — walks the chat history backwards, keeping the most recent ~40K tokens of tool output intact and replacing older tool results with a lightweight placeholder. This preserves recent context while freeing enough space.</li>
-<li><strong>Triggers auto-compact</strong> — sends the (now smaller) conversation to the LLM for summarization.</li>
-<li><strong>Resumes the original request</strong> — after compaction, retries the user's original message against the compacted history.</li>
-</ol>
-<p>This happens transparently — the user sees a brief "Context window exceeded. Auto-compacting conversation..." notice, and the task continues without manual intervention.</p>
-<p>If recovery itself fails (e.g., the conversation is too large even after pruning), ECA falls back to displaying the error so the user can manually compact or start a new chat.</p>
-<h2 id="file-reading">File Reading<a class="headerlink" href="#file-reading" title="Permanent link">#</a></h2>
-<p>You can configure the maximum number of lines returned by the <code>eca__read_file</code> tool:</p>
-<div class="highlight"><span class="filename">~/.config/eca/config.json</span><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="s2">&quot;toolCall&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="s2">&quot;readFile&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="s2">&quot;maxLines&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1000</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Default: <code>2000</code> lines</p>
+</div>
+</div>
+</div>
+<p><code>model</code> and <code>variant</code> apply when the inline chat is created (explicit client choice &gt; <code>chatInline</code> config &gt; source chat &gt; default) and stick to the chat afterwards. <code>agent</code> applies to every inline prompt where the client doesn't specify one.</p>
 
 
 
@@ -1580,22 +1386,22 @@
   
   <nav class="md-footer__inner md-grid" aria-label="Footer" >
     
-    <a href="../chat-inline/" class="md-footer__link md-footer__link--prev">
+    <a href="../rewrite/" class="md-footer__link md-footer__link--prev">
       <div class="md-footer__button md-icon">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </div>
       <div class="md-footer__title">
         <span class="md-footer__direction">Previous</span>
-        <span class="md-ellipsis">Inline chat</span>
+        <span class="md-ellipsis">Rewrite</span>
       </div>
     </a>
     
     
-    <a href="../plugins/" class="md-footer__link md-footer__link--next">
+    <a href="../context-management/" class="md-footer__link md-footer__link--next">
       <div class="md-footer__title">
         <span class="md-footer__direction">Next</span>
-        <span class="md-ellipsis">Plugins / Marketplace</span>
+        <span class="md-ellipsis">Context Management</span>
       </div>
       <div class="md-footer__button md-icon">
         

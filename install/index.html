@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://eca.dev/install/">
       
       
-        <link rel="prev" href="../workflows/">
+        <link rel="prev" href="../read-chat/">
       
       
         <link rel="next" href="../config/introduction/">
@@ -1618,15 +1618,19 @@
 
                     <div class="eca-install-arch__downloads">
                       <div class="eca-install-arch__download eca-install-arch__download--linux-x64">
-                        <a href="https://github.com/editor-code-assistant/eca-desktop/releases/latest/download/eca-linux-x64.AppImage"
+                        <a href="https://github.com/editor-code-assistant/eca-desktop/releases/latest/download/eca-linux-x86_64.AppImage"
                            class="eca-install-download__link eca-install-download__link--primary"
                            target="_blank" rel="noopener">
                           <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> AppImage
                           <span class="eca-install-download__tag">Recommended</span>
                         </a>
-                        <a href="https://github.com/editor-code-assistant/eca-desktop/releases/latest/download/eca-linux-x64.deb"
+                        <a href="https://github.com/editor-code-assistant/eca-desktop/releases/latest/download/eca-linux-amd64.deb"
                            class="eca-install-download__link" target="_blank" rel="noopener">
                           <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> .deb
+                        </a>
+                        <a href="https://github.com/editor-code-assistant/eca-desktop/releases/latest/download/eca-linux-x86_64.flatpak"
+                           class="eca-install-download__link" target="_blank" rel="noopener">
+                          <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg> Flatpak
                         </a>
                       </div>
                       <div class="eca-install-arch__download eca-install-arch__download--linux-arm64">
@@ -1647,7 +1651,11 @@
                     <strong>AppImage</strong> is the recommended format &mdash; it auto-updates
                     in place via <code>electron-updater</code>. <strong>.deb</strong> does
                     <em>not</em> auto-update; upgrade by downloading a fresh <code>.deb</code>
-                    when a new release ships.
+                    when a new release ships. <strong>Flatpak</strong> (x86_64) runs the app
+                    sandboxed &mdash; install with
+                    <code>flatpak install --user eca-linux-x86_64.flatpak</code>, upgrade by
+                    installing a fresh bundle. In every format the managed <code>eca</code>
+                    server keeps auto-updating on its own.
                   </p>
                 </div>
 
@@ -2163,6 +2171,29 @@ eca --version</pre>
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../read-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Read Chat CLI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -2314,29 +2345,6 @@ eca --version</pre>
   
   <span class="md-ellipsis">
     Introduction
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../config/template/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Templates
     
   </span>
   
@@ -2584,6 +2592,29 @@ eca --version</pre>
   
   
     <li class="md-nav__item">
+      <a href="../config/chat-inline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inline chat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../config/context-management/" class="md-nav__link">
         
   
@@ -2682,6 +2713,29 @@ eca --version</pre>
   
   <span class="md-ellipsis">
     Network / Enterprise
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../config/sandboxing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sandboxing
     
   </span>
   

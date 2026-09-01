@@ -584,6 +584,29 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../read-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Read Chat CLI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -727,29 +750,6 @@
   
   <span class="md-ellipsis">
     Introduction
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../template/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Templates
     
   </span>
   
@@ -988,6 +988,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Subagents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parent-scoped-subagents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parent-scoped subagents
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1058,6 +1073,29 @@
   
   <span class="md-ellipsis">
     Rewrite
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chat-inline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Inline chat
     
   </span>
   
@@ -1173,6 +1211,29 @@
   
   <span class="md-ellipsis">
     Network / Enterprise
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sandboxing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sandboxing
     
   </span>
   
@@ -1361,6 +1422,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Subagents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parent-scoped-subagents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parent-scoped subagents
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1385,11 +1461,18 @@
 <h1 id="agents-subagents">Agents / Subagents<a class="headerlink" href="#agents-subagents" title="Permanent link">#</a></h1>
 <p><img alt="" src="../../images/features/chat-agents.png" /></p>
 <p>When using ECA chat, you can choose which agent it will use, each allows you to customize its system prompt, tool call approvals, disabled tools, default model, skills and more.</p>
-<p>There are 2 types of agents defined via <code>mode</code> field (when absent, defaults to primary):</p>
+<p>Agents have a <code>mode</code> field that controls where they can be used. It accepts either a single string or a list:</p>
 <ul>
-<li><code>primary</code>: main agents, used in chat, can spawn subagents.</li>
+<li><code>primary</code>: main agent, used in chat, can spawn subagents.</li>
 <li><code>subagent</code>: an agent allowed to be spawned inside a chat to do a specific task and return a output to the primary agent.</li>
 </ul>
+<p>Examples:</p>
+<ul>
+<li><code>mode: "primary"</code> — only selectable as a chat agent.</li>
+<li><code>mode: "subagent"</code> — only spawnable by another agent.</li>
+<li><code>mode: ["primary", "subagent"]</code> — usable in both roles.</li>
+</ul>
+<p>When <code>mode</code> is not set, the agent is usable in both roles (equivalent to <code>["primary", "subagent"]</code>).</p>
 <h2 id="built-in-agents">Built-in agents<a class="headerlink" href="#built-in-agents" title="Permanent link">#</a></h2>
 <table>
 <thead>
@@ -1450,7 +1533,7 @@ description: Explorer with a custom model
 </div>
 </div>
 <h2 id="custom-agents-and-prompts">Custom agents and prompts<a class="headerlink" href="#custom-agents-and-prompts" title="Permanent link">#</a></h2>
-<p>You can create an agent and define its prompt, tool call approval and default model. Custom prompts can use <a href="../template/#condition-variables">template variables</a>.</p>
+<p>You can create an agent and define its prompt, tool call approval and default model. Custom prompts can use <a href="../introduction/#templates">template variables</a>.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="example-my-agent" name="__tabbed_2" type="radio" /><input id="example-overriding-a-tool-description" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="example-my-agent">Example: my-agent</label><label for="example-overriding-a-tool-description">Example: Overriding a tool description</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1487,7 +1570,7 @@ description: Explorer with a custom model
 </ul>
 <p>Subagents can be configured in config or markdown and support/require these fields:</p>
 <ul>
-<li><code>mode</code> (required): <code>subagent</code> always, this is what differs a primary agent from a subagent for ECA.</li>
+<li><code>mode</code>: set to <code>"subagent"</code> (or <code>["subagent"]</code>) to restrict an agent to subagent use only. Omit or include <code>"primary"</code> to also allow chat use.</li>
 <li><code>description</code> (required): a short summary of what this subagent will do, this is important to primary agent knows when to delegate to it.</li>
 <li>
 <p><code>systemPrompt</code> or the markdown content (required unless using <code>inherit</code>): Instructions for the subagent to what do when receive a task.</p>
@@ -1495,18 +1578,69 @@ description: Explorer with a custom model
 <li>
 <p><code>inherit</code> (optional): name of another agent to inherit all settings from. The subagent's own fields are merged on top.</p>
 </li>
+<li><code>spawnableBy</code> (optional): one primary agent ID or a collection of primary agent IDs allowed to discover and spawn this subagent. When omitted or empty, the subagent remains available to every primary agent.</li>
 <li><code>model</code> (optional): which full model to use for this subagent, using primary agent model if not specified.</li>
+<li><code>variant</code> (optional): default model variant; ignored when unavailable for the selected model. See <a href="../variants/#agent-default-variant">Variants</a>.</li>
 <li><code>tools</code> (optional): same as ECA tool approval logic to control what tools are allowed/askable/denied.</li>
+<li><code>disabledTools</code> (optional): tools to hide from this agent entirely. Same matching as the global <a href="../tools/#disabled-tools"><code>disabledTools</code></a>: a builtin tool name or regex (no <code>eca__</code> prefix needed), an exact MCP server name (all its tools), or a regex against the tool full name <code>server__tool</code>.</li>
 <li><code>maxSteps</code> (optional): set a max limit of turns/steps that his subagent must finish and return an answer.</li>
 </ul>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="markdown_1" name="__tabbed_3" type="radio" /><input id="config_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="markdown_1">Markdown</label><label for="config_1">Config</label></div>
+<h3 id="parent-scoped-subagents">Parent-scoped subagents<a class="headerlink" href="#parent-scoped-subagents" title="Permanent link">#</a></h3>
+<p>Use <code>spawnableBy</code> for workflow-specific workers that should only be available to one or more orchestrator agents. It accepts either a single agent ID or a collection:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">spawnableBy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">duel</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">spawnableBy</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">duel</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">another-orchestrator</span>
+</code></pre></div>
+<p>Matching uses exact resolved agent IDs. Markdown agent IDs and Markdown <code>spawnableBy</code> values are trimmed and lowercased during loading; JSON configuration values are matched against the configured agent keys exactly.</p>
+<p>When <code>spawnableBy</code> is omitted or empty, the subagent is unrestricted, preserving the default behavior. When it contains IDs:</p>
+<ul>
+<li>only a listed current primary agent sees the subagent in the <code>spawn_agent</code> tool description, <code>/subagents</code>, and contextual diagnostics such as the built-in <code>eca-info</code> skill;</li>
+<li>a missing current parent agent cannot discover or spawn the restricted subagent;</li>
+<li>direct <code>spawn_agent</code> calls are checked server-side and rejected with a generic unavailable error, even if the caller supplies the exact hidden agent ID;</li>
+<li><code>spawnableBy</code> only controls subagent discovery and spawning. An agent whose <code>mode</code> also includes <code>primary</code> remains selectable as a primary agent;</li>
+<li>existing subagent nesting restrictions remain unchanged.</li>
+</ul>
+<p><code>spawnableBy</code> participates in normal agent inheritance. An inherited value is preserved unless the child overrides it through the usual configuration merge behavior.</p>
+<p>The <code>/config</code> command intentionally remains an administrative, raw resolved-configuration view and can show all agent configuration, including <code>spawnableBy</code>. It is not a discovery or spawning surface.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="example-private-orchestrator-workers" name="__tabbed_3" type="radio" /><input id="markdown_1" name="__tabbed_3" type="radio" /><input id="config_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="example-private-orchestrator-workers">Example: private orchestrator workers</label><label for="markdown_1">Markdown</label><label for="config_1">Config</label></div>
 <div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">.eca/agents/duel-plan-adversary.md</span><pre><span></span><code><span class="nn">---</span>
+<span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subagent</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Challenge the orchestrator&#39;s implementation plan</span>
+<span class="nt">spawnableBy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">duel</span>
+<span class="nn">---</span>
+
+<span class="l l-Scalar l-Scalar-Plain">Review the proposed plan adversarially and return concrete risks.</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">.eca/agents/duel-implementer.md</span><pre><span></span><code><span class="nn">---</span>
+<span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subagent</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Implement the plan approved by the duel orchestrator</span>
+<span class="nt">spawnableBy</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">duel</span>
+<span class="nn">---</span>
+
+<span class="l l-Scalar l-Scalar-Plain">Implement only the approved plan and report the changes made.</span>
+</code></pre></div>
+<div class="highlight"><span class="filename">.eca/agents/duel-code-reviewer.md</span><pre><span></span><code><span class="nn">---</span>
+<span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subagent</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Review the duel implementer&#39;s changes</span>
+<span class="nt">spawnableBy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">duel</span>
+<span class="nn">---</span>
+
+<span class="l l-Scalar l-Scalar-Plain">Review the implementation for correctness, regressions, and missing tests.</span>
+</code></pre></div>
+<p>With a primary agent named <code>duel</code>, these workers appear in its <code>spawn_agent</code> tool and <code>/subagents</code> output. Other primary agents cannot discover or spawn them.</p>
+</div>
 <div class="tabbed-block">
 <p>Agents can be defined in local or global markdown files inside a <code>agents</code> folder, those will be merged to ECA config. Example:</p>
 <div class="highlight"><span class="filename">~/.config/eca/agents/my-agent.md</span><pre><span></span><code>---
 mode: subagent
 description: You sleep one second when asked
 model: ${env:MY_MODEL:anthropic/sonnet-4.5}
+variant: high
 tools:
   byDefault: ask
   deny: 
@@ -1518,6 +1652,10 @@ tools:
 You should run sleep 1 and return &quot;I slept 1 second&quot;
 </code></pre></div>
 <div class="admonition info">
+<p class="admonition-title">Agent id</p>
+<p>The agent id (the key under <code>agent</code>) is taken from the YAML <code>name:</code> field when present (trimmed and lowercased). Otherwise it falls back to the filename with all extensions stripped, so <code>architect.agent.md</code> becomes <code>architect</code>. This keeps Claude Code / OpenCode plugin agent files working without renaming.</p>
+</div>
+<div class="admonition info">
 <p class="admonition-title">Pattern-based tool approval in markdown</p>
 <p>You can append a regex pattern in parentheses after a tool name to restrict approval to calls matching the pattern. Currently only <code>eca__shell_command</code> supports this — the pattern is matched against its <code>command</code> argument. Multiple entries for the same tool are automatically merged.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">tools</span><span class="p">:</span>
@@ -1527,6 +1665,15 @@ You should run sleep 1 and return &quot;I slept 1 second&quot;
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eca__read_file</span>
 </code></pre></div>
 <p>This is equivalent to <code>argsMatchers</code> in JSON config. Patterns on tools other than <code>eca__shell_command</code> are currently ignored.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Claude-compatible tools list</p>
+<p>For Claude Code / OpenCode plugin compatibility, <code>tools</code> can also be given as a flat YAML list. It is treated as <code>byDefault: ask</code> plus the list as <code>allow</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">tools</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eca__read_file</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eca__grep</span>
+</code></pre></div>
+<p>The entries must be ECA tool ids for the allowlist to take effect; unknown names are accepted but will not match any real tool.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Tool call approval</p>
@@ -1541,6 +1688,7 @@ You should run sleep 1 and return &quot;I slept 1 second&quot;
 <span class="w">      </span><span class="s2">&quot;description&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;You sleep one second when asked&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;systemPrompt&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;You should run sleep 1 and return \&quot;I slept 1 second\&quot;&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;defaultModel&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;anthropic/sonnet-4.5&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;variant&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="s2">&quot;toolCall&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{...},</span>
 <span class="w">      </span><span class="s2">&quot;maxSteps&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">25</span><span class="w"> </span><span class="c1">// Optional: to limit turns in subagent</span>
 <span class="w">    </span><span class="p">}</span>
@@ -1570,7 +1718,7 @@ You should run sleep 1 and return &quot;I slept 1 second&quot;
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="May 14, 2026 15:26:55 UTC">May 14, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 1, 2026 18:31:28 UTC">September 1, 2026</span>
   </span>
 
     

@@ -13,6 +13,22 @@
       "description": "JSON Schema reference for editor validation support.",
       "markdownDescription": "JSON Schema reference for editor validation support."
     },
+    "extraConfigs": {
+      "type": "array",
+      "description": "Additional config file paths (relative to workspace root or absolute, ~ supported) deep merged last, overriding all other config sources. Missing paths are logged and skipped.",
+      "markdownDescription": "Additional config file paths (relative to workspace root or absolute, `~` supported) deep merged last, overriding all other config sources. Missing paths are logged and skipped.\n\nUseful for machine-specific or uncommitted overrides, e.g. `~/.config/eca/config.local.json` or `.eca/config.local.json`.",
+      "items": {
+        "type": "string"
+      },
+      "examples": [
+        [
+          "~/.config/eca/config.local.json"
+        ],
+        [
+          ".eca/config.local.json"
+        ]
+      ]
+    },
     "providers": {
       "type": "object",
       "description": "LLM provider configurations. Each key is the provider name.",
@@ -42,9 +58,9 @@
     },
     "chatRetentionDays": {
       "type": "integer",
-      "description": "Number of days to keep old chats and tool call output cache before cleanup. Set to 0 to disable cleanup entirely.",
-      "markdownDescription": "Number of days to keep old chats and tool call output cache before cleanup. Set to `0` to disable cleanup entirely.",
-      "default": 14
+      "description": "Number of days to keep chats (since last update) and tool call output cache before cleanup. Set to 0 to disable cleanup entirely.",
+      "markdownDescription": "Number of days to keep chats (since last update) and tool call output cache before cleanup. Set to `0` to disable cleanup entirely.",
+      "default": 30
     },
     "agent": {
       "type": "object",
@@ -97,8 +113,8 @@
     },
     "disabledTools": {
       "type": "array",
-      "description": "List of tool names to disable globally.",
-      "markdownDescription": "List of tool names to disable globally.",
+      "description": "Tools to disable globally. Each entry matches a builtin tool name or regex (no eca__ prefix needed), an exact MCP server name (disables all its tools), or a regex against the tool full name server__tool.",
+      "markdownDescription": "Tools to disable globally. Each entry matches a builtin tool name or regex (no `eca__` prefix needed), an exact MCP server name (disables all its tools), or a regex against the tool full name `server__tool`.",
       "items": {
         "type": "string"
       }
@@ -158,6 +174,12 @@
       "markdownDescription": "Timeout in seconds for MCP server operations.",
       "default": 60
     },
+    "mcpKeepAliveSeconds": {
+      "type": "integer",
+      "description": "Interval in seconds between keep-alive pings to remote MCP servers, preventing idle connections from being dropped by proxies. Set 0 to disable.",
+      "markdownDescription": "Interval in seconds between keep-alive pings to remote MCP servers, preventing idle connections from being dropped by proxies. Set 0 to disable.",
+      "default": 30
+    },
     "lspTimeoutSeconds": {
       "type": "integer",
       "description": "Timeout in seconds for LSP operations.",
@@ -169,6 +191,12 @@
       "description": "Timeout in seconds to wait without receiving data before considering a LLM stream stalled.",
       "markdownDescription": "Timeout in seconds to wait without receiving data before considering a LLM stream stalled.",
       "default": 120
+    },
+    "connectTimeoutSeconds": {
+      "type": "integer",
+      "description": "Timeout in seconds to establish outgoing HTTP connections (e.g. to LLM providers). Set 0 to disable. Read from file-based config only (like network settings), not initializationOptions.",
+      "markdownDescription": "Timeout in seconds to establish outgoing HTTP connections (e.g. to LLM providers). Set `0` to disable. Read from file-based config only (like network settings), not `initializationOptions`.",
+      "default": 15
     },
     "mcpServers": {
       "type": "object",
@@ -321,6 +349,54 @@
           "description": "Whether to automatically generate a title for new chats.",
           "markdownDescription": "Whether to automatically generate a title for new chats.",
           "default": true
+        },
+        "defaultTrust": {
+          "type": "boolean",
+          "description": "Whether new chats start in trust mode, auto-accepting all tool calls (never overriding deny). Applies to all editors.",
+          "markdownDescription": "Whether new chats start in trust mode, auto-accepting all tool calls (never overriding `deny`). Applies to all editors.",
+          "default": false
+        },
+        "autoSyncSystemPrompt": {
+          "type": "boolean",
+          "description": "Whether existing chats pick up system prompt changes (AGENTS.md, rules, prompts) mid-chat, invalidating the LLM prompt cache. When false (default), changes apply only to new chats; use the /sync-system-prompt command to apply to the current chat. Skill catalog changes never auto-sync (skill contents are always read fresh when loaded).",
+          "markdownDescription": "Whether existing chats pick up system prompt changes (`AGENTS.md`, rules, prompts) mid-chat, invalidating the LLM prompt cache. When `false` (default), changes apply only to new chats; use the `/sync-system-prompt` command to apply to the current chat. Skill catalog changes never auto-sync (skill contents are always read fresh when loaded).",
+          "default": false
+        }
+      }
+    },
+    "chatInline": {
+      "type": "object",
+      "description": "Inline chat feature configuration (chat/inlinePrompt), used by editors to render answers inline in buffers backed by regular chats.",
+      "markdownDescription": "Inline chat feature configuration (`chat/inlinePrompt`), used by editors to render answers inline in buffers backed by regular chats.",
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "type": "string",
+          "description": "Model to use for new inline chats. Defaults to the source chat's model when forking, otherwise the same model selection as chat.",
+          "markdownDescription": "Model to use for new inline chats. Defaults to the source chat's model when forking, otherwise the same model selection as chat.",
+          "examples": [
+            "openai/gpt-4.1",
+            "github-copilot/gpt-4.1"
+          ]
+        },
+        "agent": {
+          "type": "string",
+          "description": "Agent to use for inline chats when the client does not specify one.",
+          "markdownDescription": "Agent to use for inline chats when the client does not specify one.",
+          "examples": [
+            "code",
+            "plan"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "description": "Model variant to use for inline chats when the client does not specify one.",
+          "markdownDescription": "Model variant to use for inline chats when the client does not specify one.",
+          "examples": [
+            "low",
+            "medium",
+            "high"
+          ]
         }
       }
     },
@@ -388,11 +464,20 @@
         },
         "host": {
           "type": "string",
-          "description": "Host used in the logged URL for web.eca.dev to connect back to. Can be a LAN IP, public IP, domain, or tunnel URL. When unset, auto-detected via InetAddress/getLocalHost.",
-          "markdownDescription": "Host used in the logged URL for `web.eca.dev` to connect back to. Can be a LAN IP, public IP, domain, or tunnel URL. When unset, auto-detected via `InetAddress/getLocalHost`.",
+          "description": "Host used in the logged URL for web.eca.dev to connect back to. Can be a LAN IP, public IP, domain, or tunnel URL. When unset, auto-detected via InetAddress/getLocalHost. This is display-only and does not affect which interface the server binds to (see bindHost).",
+          "markdownDescription": "Host used in the logged URL for `web.eca.dev` to connect back to. Can be a LAN IP, public IP, domain, or tunnel URL. When unset, auto-detected via `InetAddress/getLocalHost`. This is display-only and does not affect which interface the server binds to (see `bindHost`).",
           "examples": [
             "192.168.1.42",
             "myserver.example.com"
+          ]
+        },
+        "bindHost": {
+          "type": "string",
+          "description": "Network interface the HTTP server binds to. When unset, ECA auto-detects. Set this to pin the server to a specific interface — e.g. a Tailscale/WireGuard IP, or '0.0.0.0' to bind all interfaces.",
+          "markdownDescription": "Network interface the HTTP server binds to. When unset, ECA auto-detects. Set this to pin the server to a specific interface — e.g. a Tailscale/WireGuard IP, or `0.0.0.0` to bind all interfaces.",
+          "examples": [
+            "100.101.146.110",
+            "0.0.0.0"
           ]
         },
         "port": {
@@ -407,6 +492,34 @@
           "type": "string",
           "description": "Auth token for Bearer authentication. When unset, a 32-byte hex token is auto-generated and logged to stderr.",
           "markdownDescription": "Auth token for Bearer authentication. When unset, a 32-byte hex token is auto-generated and logged to stderr."
+        },
+        "tls": {
+          "type": "object",
+          "description": "HTTPS certificate for the remote server (a *.local.eca.dev wildcard). By default ECA fetches it from tls.eca.dev and caches it under the cache dir; set certFile/keyFile to use your own, or certUrl/keyUrl to override the fetch source.",
+          "markdownDescription": "HTTPS certificate for the remote server (a `*.local.eca.dev` wildcard). By default ECA fetches it from `tls.eca.dev` and caches it under the cache dir; set `certFile`/`keyFile` to use your own, or `certUrl`/`keyUrl` to override the fetch source.",
+          "additionalProperties": false,
+          "properties": {
+            "certFile": {
+              "type": "string",
+              "description": "Path to a PEM certificate chain to use instead of fetching. Requires keyFile.",
+              "markdownDescription": "Path to a PEM certificate chain to use instead of fetching. Requires `keyFile`."
+            },
+            "keyFile": {
+              "type": "string",
+              "description": "Path to the PKCS#8 PEM private key matching certFile.",
+              "markdownDescription": "Path to the PKCS#8 PEM private key matching `certFile`."
+            },
+            "certUrl": {
+              "type": "string",
+              "description": "Override URL to fetch the certificate chain from.",
+              "markdownDescription": "Override URL to fetch the certificate chain from."
+            },
+            "keyUrl": {
+              "type": "string",
+              "description": "Override URL to fetch the private key from.",
+              "markdownDescription": "Override URL to fetch the private key from."
+            }
+          }
         }
       }
     },
@@ -508,7 +621,8 @@
           "enum": [
             "openai-responses",
             "openai-chat",
-            "anthropic"
+            "anthropic",
+            "bedrock"
           ]
         },
         "fetchModels": {
@@ -527,8 +641,8 @@
             "string",
             "null"
           ],
-          "description": "API key for authentication. Supports dynamic strings like ${env:MY_API_KEY}, ${netrc:host} or ${cmd:pass show eca/api-key}.",
-          "markdownDescription": "API key for authentication. Supports dynamic strings like `${env:MY_API_KEY}`, `${netrc:host}` or `${cmd:pass show eca/api-key}`."
+          "description": "API key for authentication. Supports dynamic strings like ${env:MY_API_KEY}, ${netrc:host} or ${cmd:pass show eca/api-key}. Takes precedence over login/OAuth auth (including when resolved from a <PROVIDER>_API_KEY env var), so it can incur paid API usage even when logged in.",
+          "markdownDescription": "API key for authentication. Supports dynamic strings like `${env:MY_API_KEY}`, `${netrc:host}` or `${cmd:pass show eca/api-key}`. Takes precedence over login/OAuth auth (including when resolved from a `<PROVIDER>_API_KEY` env var), so it can incur paid API usage even when logged in."
         },
         "keyRc": {
           "type": "string",
@@ -584,6 +698,14 @@
             "okhttp"
           ]
         },
+        "extraHeaders": {
+          "type": "object",
+          "description": "Additional HTTP headers to include in all requests to this provider (completions and models list fetching). Model-level extraHeaders take precedence on conflicts.",
+          "markdownDescription": "Additional HTTP headers to include in all requests to this provider (completions and models list fetching). Model-level `extraHeaders` take precedence on conflicts.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
         "retryRules": {
           "type": "array",
           "description": "Custom retry rules. Each rule can match by HTTP status code and/or error text regex pattern. When matched, the request is retried with exponential backoff.",
@@ -613,6 +735,63 @@
             ],
             "additionalProperties": false
           }
+        },
+        "retry": {
+          "type": "object",
+          "description": "Retry count and exponential backoff policy for transient provider errors. Applies to normal chats and sub-agents.",
+          "markdownDescription": "Retry count and exponential backoff policy for transient provider errors. Applies to normal chats and sub-agents.",
+          "properties": {
+            "maxRetries": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 10,
+              "description": "Maximum retries for rate limits, overloaded providers, and custom retry rules. The initial request is not counted.",
+              "markdownDescription": "Maximum retries for rate limits, overloaded providers, and custom retry rules. The initial request is not counted."
+            },
+            "prematureStopMaxRetries": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 3,
+              "description": "Maximum retries when a stream ends before a terminal completion event. The initial request is not counted.",
+              "markdownDescription": "Maximum retries when a stream ends before a terminal completion event. The initial request is not counted."
+            },
+            "maxAutoContinues": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 3,
+              "description": "Maximum chat-level recovery prompts after partial output or after request-level retries are exhausted. Applies to normal chats and sub-agents.",
+              "markdownDescription": "Maximum chat-level recovery prompts after partial output or after request-level retries are exhausted. Applies to normal chats and sub-agents."
+            },
+            "baseDelayMs": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 2000,
+              "description": "Initial exponential backoff delay in milliseconds. ECA applies jitter from 50% up to 150% of the capped delay.",
+              "markdownDescription": "Initial exponential backoff delay in milliseconds. ECA applies jitter from 50% up to 150% of the capped delay."
+            },
+            "backoffMultiplier": {
+              "type": "number",
+              "minimum": 1,
+              "default": 2,
+              "description": "Multiplier applied to the backoff delay after each retry.",
+              "markdownDescription": "Multiplier applied to the backoff delay after each retry."
+            },
+            "maxDelayMs": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 60000,
+              "description": "Maximum exponential backoff delay before jitter, in milliseconds. Provider-supplied rate-limit reset delays use rateLimitMaxWaitSeconds instead.",
+              "markdownDescription": "Maximum exponential backoff delay before jitter, in milliseconds. Provider-supplied rate-limit reset delays use `rateLimitMaxWaitSeconds` instead."
+            }
+          },
+          "additionalProperties": false
+        },
+        "rateLimitMaxWaitSeconds": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 60,
+          "description": "Maximum total delay before retrying a provider rate limit, including ECA's one-second safety buffer. The delay is derived from retry-after or provider-specific reset data and defaults to a 60-second cap. When the total delay exceeds the cap, ECA gives up retrying and surfaces the reset time in the error.",
+          "markdownDescription": "Maximum total delay before retrying a provider rate limit, including ECA's one-second safety buffer. The delay is derived from `retry-after` or provider-specific reset data and defaults to a 60-second cap. When the total delay exceeds the cap, ECA gives up retrying and surfaces the reset time in the error."
         },
         "models": {
           "type": "object",
@@ -667,6 +846,58 @@
           ],
           "default": "all"
         },
+        "imageInput": {
+          "type": "boolean",
+          "description": "Whether this model accepts image input (vision). Useful for custom/local models models.dev doesn't know about.",
+          "markdownDescription": "Whether this model accepts image input (vision). Useful for custom/local models models.dev doesn't know about.",
+          "default": false
+        },
+        "limit": {
+          "type": "object",
+          "description": "Override the model's token limits (overrides models.dev). Useful for local models or to cap a known model's context window.",
+          "markdownDescription": "Override the model's token limits (overrides models.dev). Useful for local models or to cap a known model's context window.",
+          "properties": {
+            "context": {
+              "type": "integer",
+              "description": "Context window size in tokens (drives the usage display and auto-compaction).",
+              "markdownDescription": "Context window size in tokens (drives the usage display and auto-compaction)."
+            },
+            "output": {
+              "type": "integer",
+              "description": "Maximum output tokens.",
+              "markdownDescription": "Maximum output tokens."
+            }
+          },
+          "additionalProperties": false
+        },
+        "cost": {
+          "type": "object",
+          "description": "Override the model's pricing (overrides models.dev). Costs are per 1M tokens.",
+          "markdownDescription": "Override the model's pricing (overrides models.dev). Costs are per 1M tokens.",
+          "properties": {
+            "input": {
+              "type": "number",
+              "description": "Cost per 1M input tokens.",
+              "markdownDescription": "Cost per 1M input tokens."
+            },
+            "output": {
+              "type": "number",
+              "description": "Cost per 1M output tokens.",
+              "markdownDescription": "Cost per 1M output tokens."
+            },
+            "cacheRead": {
+              "type": "number",
+              "description": "Cost per 1M cached input tokens read.",
+              "markdownDescription": "Cost per 1M cached input tokens read."
+            },
+            "cacheWrite": {
+              "type": "number",
+              "description": "Cost per 1M cached input tokens written.",
+              "markdownDescription": "Cost per 1M cached input tokens written."
+            }
+          },
+          "additionalProperties": false
+        },
         "variants": {
           "type": "object",
           "description": "Named payload presets for this model. Merged with built-in variants; same-name entries override built-ins. Setting a variant to {} removes that built-in variant.",
@@ -690,10 +921,41 @@
           "examples": ["code", "plan", "explorer"]
         },
         "mode": {
-          "type": "string",
-          "description": "Agent mode. 'primary' for standalone agents, 'subagent' for agent-spawnable agents.",
-          "markdownDescription": "Agent mode. 'primary' for standalone agents, 'subagent' for agent-spawnable agents.",
-          "enum": ["primary", "subagent"]
+          "description": "Roles this agent can be used in. Accepts either a single string ('primary' or 'subagent') or a list (e.g. ['primary', 'subagent']). 'primary' means selectable as a chat agent; 'subagent' means spawnable by another agent. Defaults to both when absent.",
+          "markdownDescription": "Roles this agent can be used in. Accepts either a single string (`\"primary\"` or `\"subagent\"`) or a list (e.g. `[\"primary\", \"subagent\"]`). `primary` means selectable as a chat agent; `subagent` means spawnable by another agent. Defaults to both when absent.",
+          "oneOf": [
+            {
+              "type": "string",
+              "enum": ["primary", "subagent"]
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["primary", "subagent"]
+              },
+              "uniqueItems": true
+            }
+          ]
+        },
+        "spawnableBy": {
+          "description": "Primary agent name or names allowed to discover and spawn this agent as a subagent. Matching uses exact resolved agent IDs. When omitted or empty, every primary agent may spawn it. This does not affect primary-agent selectability.",
+          "markdownDescription": "Primary agent ID or IDs allowed to discover and spawn this agent as a subagent. Matching uses exact resolved agent IDs. When omitted or empty, every primary agent may spawn it. Restricted agents are filtered from `spawn_agent`, `/subagents`, and contextual diagnostics, and direct spawn attempts are enforced server-side. This does not affect whether `mode` includes `primary`. The field participates in normal agent inheritance/merge behavior.",
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          ],
+          "examples": ["duel", ["duel", "another-orchestrator"]]
         },
         "description": {
           "type": "string",
@@ -713,9 +975,9 @@
         },
         "defaultModel": {
           "type": "string",
-          "description": "Default model for this agent, overriding the global default.",
-          "markdownDescription": "Default model for this agent, overriding the global default.",
-          "examples": ["anthropic/claude-sonnet-4-6"]
+          "description": "Default model for this agent, overriding the global default. May be a full provider/model id or a bare model name resolved against the currently selected provider's models (provider-relative alias).",
+          "markdownDescription": "Default model for this agent, overriding the global default. May be a full `provider/model` id or a bare model name resolved against the currently selected provider's models (provider-relative alias).",
+          "examples": ["anthropic/claude-sonnet-4-6", "explorer-small"]
         },
         "variant": {
           "type": "string",
@@ -725,8 +987,8 @@
         },
         "disabledTools": {
           "type": "array",
-          "description": "Tools to disable for this agent.",
-          "markdownDescription": "Tools to disable for this agent.",
+          "description": "Tools to disable for this agent. Each entry matches a builtin tool name or regex (no eca__ prefix needed), an exact MCP server name (disables all its tools), or a regex against the tool full name server__tool.",
+          "markdownDescription": "Tools to disable for this agent. Each entry matches a builtin tool name or regex (no `eca__` prefix needed), an exact MCP server name (disables all its tools), or a regex against the tool full name `server__tool`.",
           "items": {
             "type": "string"
           }
@@ -765,20 +1027,30 @@
             "sessionEnd",
             "chatStart",
             "chatEnd",
+            "chatStatusChanged",
+            "subagentStart",
+            "subagentPostRequest",
             "preRequest",
             "postRequest",
+            "preCompact",
+            "postCompact",
             "preToolCall",
             "postToolCall"
           ]
         },
+        "description": {
+          "type": "string",
+          "description": "Brief explanation of the hook's purpose, shown by /hooks.",
+          "markdownDescription": "Brief explanation of the hook's purpose, shown by `/hooks`."
+        },
         "matcher": {
-          "description": "Matches *ToolCall hooks; unmatched hooks are skipped. String: legacy regex against server__tool-name. Object: tool selector map with optional argsMatchers.",
-          "markdownDescription": "Matches `*ToolCall` hooks; unmatched hooks are skipped. **String**: legacy regex against `server__tool-name`. **Object**: tool selector map with optional `argsMatchers`.",
+          "description": "Matches *ToolCall hooks or compact hooks; unmatched hooks are skipped. For tool hooks, strings are legacy regex against server__tool-name and objects are tool selector maps with optional argsMatchers. For compact hooks, strings are exact matches against the triggered value (manual or auto); omitted matcher runs for both.",
+          "markdownDescription": "Matches `*ToolCall` hooks or compact hooks; unmatched hooks are skipped. For tool hooks, **String** is a legacy regex against `server__tool-name` and **Object** is a tool selector map with optional `argsMatchers`. For compact hooks, strings are matched as exact strings against the `triggered` value (`manual` or `auto`); omitted matcher runs for both.",
           "oneOf": [
             {
               "type": "string",
-              "description": "Regex pattern for matching server__tool-name.",
-              "markdownDescription": "Regex pattern for matching `server__tool-name`."
+              "description": "Tool hooks: regex pattern for matching server__tool-name. Compact hooks: exact triggered value (manual or auto).",
+              "markdownDescription": "Tool hooks: regex pattern for matching `server__tool-name`. Compact hooks: exact `triggered` value (`manual` or `auto`)."
             },
             {
               "type": "object",
@@ -836,8 +1108,8 @@
         },
         "file": {
           "type": "string",
-          "description": "Path to a shell script file to execute.",
-          "markdownDescription": "Path to a shell script file to execute."
+          "description": "Path to a shell script file to execute. Relative paths resolve against the first workspace root; ~ is supported.",
+          "markdownDescription": "Path to a shell script file to execute. Relative paths resolve against the first workspace root; `~` is supported."
         },
         "timeout": {
           "type": "integer",
@@ -937,22 +1209,36 @@
           "properties": {
             "path": {
               "type": "string",
-              "description": "Custom shell executable path. Overrides the default platform shell (bash on Linux/macOS, powershell on Windows).",
-              "markdownDescription": "Custom shell executable path. Overrides the default platform shell (`bash` on Linux/macOS, `powershell` on Windows)."
+              "description": "Custom shell executable path. Overrides the default platform shell (bash on Linux/macOS, powershell on Windows). Applies to the shell_command and git tools.",
+              "markdownDescription": "Custom shell executable path. Overrides the default platform shell (`bash` on Linux/macOS, `powershell` on Windows). Applies to the `shell_command` and `git` tools."
             },
             "args": {
               "type": "array",
               "items": {
                 "type": "string"
               },
-              "description": "Arguments passed to the shell before the script argument. E.g. [\"-l\", \"-c\"] for bash.",
-              "markdownDescription": "Arguments passed to the shell before the script argument. E.g. `[\"-l\", \"-c\"]` for bash."
+              "description": "Arguments passed to the shell before the script argument. E.g. [\"-l\", \"-c\"] for bash. Applies to the shell_command and git tools.",
+              "markdownDescription": "Arguments passed to the shell before the script argument. E.g. `[\"-l\", \"-c\"]` for bash. Applies to the `shell_command` and `git` tools."
             },
             "summaryMaxLength": {
               "type": "integer",
               "description": "Maximum length of shell command summary.",
               "markdownDescription": "Maximum length of shell command summary.",
-              "default": 25
+              "default": 35
+            }
+          }
+        },
+        "editorNav": {
+          "type": "object",
+          "description": "Configuration for the editor LSP navigation tools (editor_definition and editor_references).",
+          "markdownDescription": "Configuration for the editor LSP navigation tools (`editor_definition` and `editor_references`).",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "description": "Whether to offer the editor_definition and editor_references tools when the client declares support for them.",
+              "markdownDescription": "Whether to offer the `editor_definition` and `editor_references` tools when the client declares support for them.",
+              "default": true
             }
           }
         },
@@ -1127,6 +1413,11 @@
           "type": "string",
           "description": "Override the client_name sent during OAuth Dynamic Client Registration. Required for servers that allowlist clients by name (e.g. Figma). Defaults to 'ECA (Editor Code Assistant)' when not set.",
           "markdownDescription": "Override the `client_name` sent during OAuth Dynamic Client Registration. Required for servers that allowlist clients by name (e.g. Figma). Defaults to `ECA (Editor Code Assistant)` when not set."
+        },
+        "authScope": {
+          "type": "string",
+          "description": "Controls how the OAuth token for this server is shared across projects. 'global' (default): one token shared everywhere. 'workspace': a separate token per workspace folder set, so authenticating different accounts in different projects does not clobber each other. Any other value defines a named bucket shared by every project that uses the same value. Like other config values, supports dynamic-string interpolation (${env:...}, ${file:...}, ${cmd:...}, etc.).",
+          "markdownDescription": "Controls how the OAuth token for this server is shared across projects. `global` (default): one token shared everywhere. `workspace`: a separate token per workspace folder set, so authenticating different accounts in different projects does not clobber each other. Any other value defines a named bucket shared by every project that uses the same value. Like other config values, supports dynamic-string interpolation (`${env:...}`, `${file:...}`, `${cmd:...}`, etc.)."
         }
       },
       "additionalProperties": false
